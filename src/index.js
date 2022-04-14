@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './i18n';
 import {createStore} from "redux";
+import { Provider } from "react-redux";
 // import reportWebVitals from './reportWebVitals';
 
 const action ={type: "", payload: "?"}
@@ -26,9 +27,11 @@ const store=createStore();
 
 ReactDOM.render(
   <React.StrictMode>
+     <Provider store={store}>
         <Suspense fallback={<div>Loading...</div>}>
         <App />
     </Suspense>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
