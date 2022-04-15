@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../style.css';
 import { useTranslation } from "react-i18next";
+import { useSetSearchTerm } from '../../models/SearchTerm/use';
+import { useSearchTerm } from '../../models/SearchTerm/use';
 
 const list = [
     '4k',
@@ -49,9 +51,17 @@ const list = [
 
 
 const Hint = () => {
-    
+  //const [search, setSearch] = useState(props.value);
+  const setSearchTerm = useSetSearchTerm();
+
  const [word, setwords] = useState([]);
  const { t, i18n } = useTranslation();
+////////////////////////
+ const handleLinkClick = () => {
+  setSearchTerm(word);
+  console.log(setSearchTerm);
+}
+
  useEffect(() => {
      let rand=0;
         rand = list[Math.floor(Math.random()*39)];
@@ -60,8 +70,8 @@ const Hint = () => {
   }, []);
 
   return (
-            <li className='hero__search-container__search-tags__tag-container__tag'>
-                <a className='#' data-popular-search-value='4k' data-track-action='popular-search' data-track-label='4k' href='/ru-ru/search/4k/'>
+            <li className='hero__search-container__search-tags__tag-container__tag' onClick={handleLinkClick}>
+                <a className='#' data-popular-search-value='4k' data-track-action='popular-search' data-track-label='4k' >
                 {word},
                 </a>
             </li>     

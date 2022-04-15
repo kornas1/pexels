@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
  import Photo from '../Components/Photo/Photo';
  import Choice from '../Components/Choice/Choice';
  import Size from '../Components/Size/Size';
-
+import { useSearchTerm } from '../models/SearchTerm/use';
  import '../Components/style.css';
 import Orientation from '../Components/Orientation/Orientation';
 //import { getValue } from '@testing-library/user-event/dist/utils';

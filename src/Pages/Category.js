@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
  import Choice from '../Components/Choice/Choice';
  import Size from '../Components/Size/Size';
  import { useTranslation } from "react-i18next";
-
+ import { useSearchTerm } from '../models/SearchTerm/use';
  import '../Components/style.css';
 import Orientation from '../Components/Orientation/Orientation';
 //import { getValue } from '@testing-library/user-event/dist/utils';
@@ -19,7 +19,8 @@ const Category = () => {
    const [currentPage, setCurrentPage] = useState(1);
   const [, setFetching] = useState(true);
 
-  const [value, setValue] = useState("people");
+  const searchTerm = useSearchTerm();
+  const [value, setValue] = useState(searchTerm);
 
   const [word, setWord] = useState("");
   const [totalresults, setTotalPhotos] = useState(0);

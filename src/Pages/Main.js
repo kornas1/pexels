@@ -13,6 +13,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 const API_KEY=`${process.env.REACT_APP_API_KEY}`
 
 const Main = () => {
+
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [, setFetching] = useState(true);

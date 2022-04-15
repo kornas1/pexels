@@ -1,37 +1,37 @@
 import React ,{ Suspense } from 'react';
 import ReactDOM from 'react-dom';
- import './main.css';
+import './main.css';
 import App from './App';
 import './i18n';
 import {createStore} from "redux";
-import { Provider } from "react-redux";
+//import { Provider } from "react-redux";
 // import reportWebVitals from './reportWebVitals';
 
-const action ={type: "", payload: "?"}
+// const action ={type: "", payload: "?"}
 
-const defaultState={
-  cash:0,
-}
+// const defaultState={
+//   cash:0,
+// }
 
 
-const reducer=(state=defaultState, action)=>{
- switch(action.type){
-  case "ADD":
-    return {...state}
+// const reducer=(state=defaultState, action)=>{
+//  switch(action.type){
+//   case "ADD":
+//     return {...state, cash: state.cash+action.payload}
 
-  default:
-    return state
- }
-}
-const store=createStore();
+//   default:
+//     return state
+//  }
+// }
+//  const store=createStore(reducer);
 
 ReactDOM.render(
   <React.StrictMode>
-     <Provider store={store}>
+  
         <Suspense fallback={<div>Loading...</div>}>
         <App />
     </Suspense>
-    </Provider>
+ 
   </React.StrictMode>,
   document.getElementById('root')
 );
