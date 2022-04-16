@@ -12,6 +12,7 @@ export function useSetSearchTerm() {
     const dispatch = useDispatch();
 
     return (searchTerm) => {
+        console.log(actions.setSearchTerm(searchTerm), 'rootState')
         dispatch(actions.setSearchTerm(searchTerm))
     }
 }

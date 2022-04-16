@@ -100,11 +100,11 @@ const Main = () => {
                   <Hint/>&nbsp;
                   <Hint/>&nbsp;
                   <Hint/>&nbsp;
-                  <li className='hero__search-container__search-tags__tag-container__tag'>
+                  {/* <li className='hero__search-container__search-tags__tag-container__tag'>
                     <a data-track-action='hero' data-track-label='more-popular-searches' href='/ru-ru/popular-searches/'>
                     {t("more")}
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
             </ul>

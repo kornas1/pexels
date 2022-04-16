@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../style.css';
+import { Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { useSetSearchTerm } from '../../models/SearchTerm/use';
-import { useSearchTerm } from '../../models/SearchTerm/use';
+//import { useSearchTerm } from '../../models/SearchTerm/use';
 
 const list = [
     '4k',
@@ -69,12 +70,13 @@ const Hint = () => {
     setwords(rand);
   }, []);
 
-  return (
-            <li className='hero__search-container__search-tags__tag-container__tag' onClick={handleLinkClick}>
+  return ( 
+     <Link to="search" onClick={handleLinkClick}>
+            <li className='hero__search-container__search-tags__tag-container__tag' >
                 <a className='#' data-popular-search-value='4k' data-track-action='popular-search' data-track-label='4k' >
-                {word},
-                </a>
-            </li>     
+                {word} </a>
+            </li> 
+            </Link>    
   );
 };
 

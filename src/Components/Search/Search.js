@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSetSearchTerm } from '../../models/SearchTerm/use'
+import { useSearchTerm } from '../../models/SearchTerm/use';
 import '../style.css';
 
 import { useTranslation } from "react-i18next";
 
 const Search = (props) => {
-  const [search, setSearch] = useState(props.value);
+   const [search, setSearch] = useState(props.value);
+  const searchTerm = useSearchTerm();
+  //const [search, setSearch] = useState(searchTerm);
   const setSearchTerm = useSetSearchTerm();
   const { t, i18n } = useTranslation();
 

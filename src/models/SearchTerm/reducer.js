@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
         case SET_SEARCH_TERM: 
             return {
                 ...state,
-                searchTerm: action.searchTerm
+                searchTerm: action.searchTerm,
             }
         default: 
             return state;
