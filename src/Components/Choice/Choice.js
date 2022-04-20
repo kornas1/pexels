@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import "../style.css";
 
 const Choice = (props) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <ul className="choice__element choice__format">
       <li>
@@ -35,7 +35,7 @@ const Choice = (props) => {
         </a>
       </li>
       <li>
-        <a>
+        <a href="#">
           {/* href={`/search/${params.query}`}
         title={`Free ${params.query} videos`}> */}
           <i className="rd__svg-icon">
@@ -53,7 +53,7 @@ const Choice = (props) => {
         </a>
       </li>
       <li>
-        <a>
+        <a href="#">
           {/* href={`/search/${params.query}`}> */}
           <i className="rd__svg-icon">
             <svg

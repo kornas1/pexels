@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import "../style.css";
 
 const Author = (back) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="hero__footer">
       <div className="hero__footer__item"></div>

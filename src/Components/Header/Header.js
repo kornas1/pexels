@@ -46,7 +46,7 @@ const Header = (props) => {
   return (
     <nav className={header}>
       <Link to="/">
-        <a
+        <div
           className="main-nav-bar__logo"
           href="/ru-ru/"
           title="Бесплатные стоковые фото"
@@ -71,14 +71,14 @@ const Header = (props) => {
 
           <div
             className="hide-when-mid-size-and-smaller main-nav-bar__logo__text"
-            href="/ru-ru/"
+            // href="/ru-ru/"
           >
             Pexels
           </div>
-        </a>
+        </div>
       </Link>
       <Search onSubmit={props.fun} />
-      <ul className="main-nav-bar__sub-nav">
+      <ul className="main-nav-bar__sub-nav dots">
         <li className="hide-when-mid-size-and-smaller">
           <div data-dropdown="explore">
             <a
@@ -223,51 +223,54 @@ const Header = (props) => {
                     // </div>
                     // }}
                   >
-                    <div className="flag" href="#" rel="nofollow noreferrer">
-                      {t("language")}
-                      &nbsp;
-                      <li
-                        className="locale__option locale__option--main"
-                        value="en-US"
-                        rel="nofollow"
-                        onClick={() => {
-                          changeLanguage("en");
-                        }}
-                      >
-                        <img
-                          width="36"
-                          height="26"
-                          className="locale__flag"
-                          alt="flag"
-                          src="https://www.pexels.com/assets/flags/en-US-9ac49f52fbe3cc86ef500da8d7dfac4468c0e98419808425a9cdc1af7714cee1.png"
-                        />
-                        {/* <span>English</span> */}
-                      </li>
-                      <li
-                        className="locale__option locale__option--main"
-                        value="ru-RU"
-                        rel="nofollow"
-                        onClick={() => {
-                          changeLanguage("ru");
-                        }}
-                      >
-                        <img
-                          width="36"
-                          height="26"
-                          className="locale__flag"
-                          alt="flag"
-                          src="https://www.pexels.com/assets/flags/ru-RU-95c9aa90687ba690ada7173b898561d1bdde41742b76b28c396255f2f200fe98.png"
-                        />
-                        {/* <span>Русский</span> */}
-                      </li>
-                      {/* <img
+                    {" "}
+                    <span className="language">
+                      <div className="flag" href="#" rel="nofollow noreferrer">
+                        {t("language")}
+                        &nbsp;
+                        <span
+                          //  className="locale"
+                          // value="en-US"
+                          // rel="nofollow"
+                          onClick={() => {
+                            changeLanguage("en");
+                          }}
+                        >
+                          <img
+                            width="36"
+                            height="26"
+                            className="locale__flag"
+                            alt="flag"
+                            src="https://www.pexels.com/assets/flags/en-US-9ac49f52fbe3cc86ef500da8d7dfac4468c0e98419808425a9cdc1af7714cee1.png"
+                          />
+                          {/* <span>English</span> */}
+                        </span>
+                        <span
+                          //  className="locale"
+                          // value="ru-RU"
+                          // rel="nofollow"
+                          onClick={() => {
+                            changeLanguage("ru");
+                          }}
+                        >
+                          <img
+                            width="36"
+                            height="26"
+                            className="locale__flag"
+                            alt="flag"
+                            src="https://www.pexels.com/assets/flags/ru-RU-95c9aa90687ba690ada7173b898561d1bdde41742b76b28c396255f2f200fe98.png"
+                          />
+                          {/* <span>Русский</span> */}
+                        </span>
+                        {/* <img
                         width="36"
                         height="26"
                         className="locale__flag"
                         // src={Flags[curLang] || Flags['en-US']}
                        alt="flag"
                       /> */}
-                    </div>
+                      </div>
+                    </span>
                   </li>
                   <li className="dropdown__el__content__el">
                     <a href="https://www.pexels.com/api/">{t("api")}</a>
@@ -288,7 +291,7 @@ const Header = (props) => {
                   </li>
                   <li className="dropdown__el__content__el">
                     <a href="https://www.pexels.com/become-a-partner/">
-                      {t("apps")}
+                      {t("parthnerships")}
                     </a>
                   </li>
                   <li className="dropdown__el__content__el">
@@ -305,8 +308,8 @@ const Header = (props) => {
                     <a
                       className="rd__button button__drop"
                       href="https://www.facebook.com/pexels"
-                      rel="nofollow noreferrer"
                       target="_blank"
+                      rel="noopener noreferrer"
                       title="Facebook"
                     >
                       <svg
@@ -327,7 +330,7 @@ const Header = (props) => {
                     <a
                       className="rd__button button__drop"
                       href="https://twitter.com/pexels"
-                      rel="nofollow noreferrer"
+                      rel="noopener noreferrer"
                       target="_blank"
                       title="Twitter"
                     >
@@ -364,7 +367,7 @@ const Header = (props) => {
                     <a
                       className="rd__button button__drop"
                       href="https://instagram.com/pexels/"
-                      rel="nofollow noreferrer"
+                      rel="noopener noreferrer"
                       target="_blank"
                       title="Instagram"
                     >
@@ -382,7 +385,7 @@ const Header = (props) => {
                     <a
                       className="rd__button button__drop"
                       href="https://www.pinterest.com/pexels"
-                      rel="nofollow noreferrer"
+                      rel="noopener noreferrer"
                       target="_blank"
                       title="Pinterest"
                     >
@@ -404,7 +407,7 @@ const Header = (props) => {
                     <a
                       className="rd__button button__drop"
                       href="https://www.youtube.com/c/PexelsPhotos"
-                      rel="nofollow noreferrer"
+                      rel="noopener noreferrer"
                       target="_blank"
                       title="YouTube"
                     >
@@ -425,7 +428,7 @@ const Header = (props) => {
             </div>
           </div>
         </li>
-        <li className="#">
+        <li className="buttonjoin">
           <a
             className="main-nav-bar__sub-nav__item main-nav-bar__sub-nav__item--button"
             data-track-action="navbar"
@@ -436,12 +439,29 @@ const Header = (props) => {
             {t("join")}
           </a>
         </li>
+
         {/* <!-- <li className='js-lazy-dropdown show-when-hame-is-visible' data-dropdown='ham'>
                 <button className='js-nav-ham main-nav-bar__sub-nav__item'>
                     <i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
                     </i>
                 </button>
             </li> --> */}
+        {/* <li 
+        class="show-when-hame-is-visible"
+        >
+          <button class="js-nav-ham main-nav-bar__sub-nav__item">
+            <i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+              </svg>
+            </i>
+          </button>
+        </li> */}
       </ul>
     </nav>
   );

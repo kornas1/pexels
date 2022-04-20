@@ -13,15 +13,15 @@ import { setSearchItem } from "../actions/search";
 import { getMainImages } from "../actions/main";
 import { connect } from "react-redux";
 
-const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+//const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 
 const Main = ({ setSearchItem, search, getMainImages, main }) => {
-  const [items, setItems] = useState([]);
+ // const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [, setFetching] = useState(true);
+  //const [, setFetching] = useState(true);
   const [back, setBack] = useState({});
   // const[scroll, setScroll]=useState(1);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const fetchData = async () => {
     console.log("fetch");
@@ -90,7 +90,7 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
   }, [currentPage]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <body>
+    <div>
       <Header props={1} />
       <header className="hero">
         <div className="hero__background">
@@ -159,7 +159,7 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
           <Photo items={main.data ? main.data : []} />
         </InfiniteScroll>
       </div>
-    </body>
+    </div>
   );
 };
 

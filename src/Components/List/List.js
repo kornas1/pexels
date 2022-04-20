@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import "../style.css";
 
 const List = () => {
-  const { t, i18n } = useTranslation();
+  const { t} = useTranslation();
   return (
     <div className="list">
       <a className="list__el list__el--active" href="/">

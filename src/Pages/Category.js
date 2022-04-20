@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState,  useCallback } from "react";
 // import { Link } from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Header from "../Components/Header/Header";
@@ -11,11 +11,13 @@ import Orientation from "../Components/Orientation/Orientation";
 import { connect } from "react-redux";
 import { getCategoryImages } from "../actions/category";
 import { setSearchItem } from "../actions/search";
+import { useTranslation } from "react-i18next";
 //import { getValue } from '@testing-library/user-event/dist/utils';
 
-const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+//const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 
 const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
+  const { t, i18n } = useTranslation();
   // const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   // const [, setFetching] = useState(true);
@@ -25,7 +27,7 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
   // const [category, setCategory] = useState(false);
   // const [open, setOpen] = useState(false);
   const [size, setSize] = useState("");
-  let str = "";
+  //let str = "";
 
   const handleSubmit = useCallback(
     (event) => {
@@ -95,7 +97,7 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
   console.log(category.data);
 
   return (
-    <body>
+    <div>
       <Header props={0} fun={handleSubmit} />
 
       <div className="search-photos">
@@ -118,7 +120,7 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
                   </svg>
                 </i>
                 <span className="choice__params--span">
-                  color
+                  {t("color")}
                   {/* <FormattedMessage id="color" /> */}
                 </span>
               </button>
@@ -126,7 +128,7 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
           </ul>
         </div>
         <div className="search-photos__header">
-          <h1>{word} фото</h1>
+          <h1>{word} {t("photos")}</h1>
         </div>
       </div>
       <InfiniteScroll
@@ -143,7 +145,7 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
         {/* REACT_APP_API_KEY = 563492ad6f91700001000001144a82244ce645b69edc061c1fa2e6bd; */}
         <Photo items={category.data ? category.data : []} />
       </InfiniteScroll>
-    </body>
+    </div>
   );
 };
 

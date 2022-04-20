@@ -77,8 +77,8 @@ import { useTranslation } from "react-i18next";
 import { setSearchItem } from "../../actions/search";
 import { connect } from "react-redux";
 
-const Search = ({ search, setSearchItem, onSubmit }) => {
-  const { t, i18n } = useTranslation();
+const Search = ({ search, setSearchItem, onSubmit=null }) => {
+  const { t,  } = useTranslation();
   return (
     <div className="main-nav-bar__search-bar">
       <form
@@ -86,7 +86,7 @@ const Search = ({ search, setSearchItem, onSubmit }) => {
         onSubmit={(event) => {
           onSubmit(event);
         }}
-        autocomplete="off"
+        autoComplete="off"
         className="search-bar"
         data-search-urls-photo="/ru-ru/search/---query/"
         data-search-urls-query-placeholder="---query"
@@ -100,8 +100,8 @@ const Search = ({ search, setSearchItem, onSubmit }) => {
             onChange={(event) => {
               setSearchItem(event.target.value);
             }}
-            autocapitalize="none"
-            autocomplete="off"
+            autoCapitalize="none"
+            autoComplete="off"
             id="search"
             name="s"
             placeholder={t("searchPlaceholder")}
@@ -113,7 +113,7 @@ const Search = ({ search, setSearchItem, onSubmit }) => {
             id="search-action"
             title="Поиск стоковых фото"
             type="submit"
-            onClick={(event) => onSubmit(event)}
+            onClick={(event) => {onSubmit!==null && onSubmit(event)}}
           >
             <Link to="/search">
               <i className="rd__svg-icon">

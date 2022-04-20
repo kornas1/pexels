@@ -4,7 +4,7 @@ import "../style.css";
 
 const Orientation = (props) => {
   const [open, setOpen] = useState(false);
-  const { t, i18n } = useTranslation();
+  const { t} = useTranslation();
   return (
     <li
       className={`choice__params__el ${open ? "active" : ""}`}

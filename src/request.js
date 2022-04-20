@@ -1,15 +1,15 @@
 import _ from "lodash";
 import axios from "axios";
-import { pathToRegexp, parse, compile } from "path-to-regexp";
+import { parse, compile } from "path-to-regexp";
 import store from "./store";
 
 axios.defaults.baseURL = "https://api.pexels.com/v1";
 
 axios.interceptors.request.use(
   function(config) {
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
     config.headers.Authorization =
-      "563492ad6f917000010000014640aabb4e9d420cbe1c0df7daf4c2bf";
+      "563492ad6f91700001000001144a82244ce645b69edc061c1fa2e6bd";
     return config;
   },
   function(error) {

@@ -6,7 +6,7 @@ const Like = (id) => {
   // const [like, setlike] = useState(0);
   const [like, setlike] = useLocalStorage(id.id, 0);
 
-  const h = (like) => {
+  const ChangeLike = (like) => {
     if (like === 0) {
       setlike(1);
     } else {
@@ -51,7 +51,7 @@ const Like = (id) => {
     <button
       className="phot-col__photos__el__tabs__el"
       onClick={() => {
-        h(like);
+        ChangeLike(like);
       }}
     >
       <i className="phot-col__photos__el__tabs__el">

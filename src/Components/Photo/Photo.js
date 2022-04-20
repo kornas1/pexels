@@ -2,7 +2,7 @@ import Masonry from "react-masonry-css";
 import React from "react";
 import { saveAs } from "file-saver";
 import Like from "../Like/Like";
-import { useTranslation } from "react-i18next";
+//import { useTranslation } from "react-i18next";
 // import { useDispatch, useSelector } from "react-redux";
 // import React, { useEffect, useState } from 'react';
 //import { Link } from 'react-router-dom';
@@ -16,7 +16,7 @@ const Columns = {
 
 const Photo = (items) => {
   // console.log("items",items);
-  const { t, i18n } = useTranslation();
+  //const { t, i18n } = useTranslation();
   return (
     <Masonry
       breakpointCols={Columns}
@@ -35,7 +35,7 @@ const Photo = (items) => {
                     srcSet={photo.src ? photo.src.medium : ""}
                     className="photo-item__img"
                     alt="Фотография"
-                    style={{ backgroundColor: photo.avg_color }}
+                    // style={{ backgroundColor: photo.avg_color }}
                   />
                 </a>
                 <div className="phot-col__photos__el--hov">
