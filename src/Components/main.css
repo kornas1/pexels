@@ -15,12 +15,6 @@ body, html {
   background-color: #fff;
 }
 
-/* body {
-    overflow-x: hidden;
-    overflow-y: scroll;
-     display: block;
-} */
-
 *, :before, :after {
     box-sizing: border-box;
 }
@@ -273,30 +267,6 @@ li {
     height: 25px;
 }
 
-/* .rd__button {
-     background: #05a081; 
-    color: #fff;
-     border-color: #05a081; 
-    line-height: 1;
-    position: relative;
-    display: -webkit-inline-box;
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    white-space: nowrap;
-    padding: 11px 24px;
-    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
-} */
 
 .hero__title {
     display: block;
@@ -580,61 +550,11 @@ a:-webkit-any-link {
     cursor: pointer;
     text-decoration: underline;
 }
-/* .underlined-tabs--centered { */
-    /* display: block;
-    text-align: center;
-}
-.underlined-tabs {
-    -webkit-overflow-scrolling: touch;
-    overflow-x: auto;
-    white-space: nowrap;
-    display: -webkit-box;
-    display: flex;
-}
 
-
-.underlined-tabs__tab {
-    display: block;
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 0;
-    display: -webkit-inline-box;
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    padding: 0.7rem 1rem;
-    color: #5e5e5e;
-    position: relative;
-    cursor: pointer;
-    text-decoration: none;
-    -webkit-transition: .2s color ease;
-    transition: .2s color ease;
-} */
 a {
     color: inherit;
 }
-/* *, :before, :after {
-    box-sizing: border-box;
-} */
-/* таблица стилей агента пользователя
-a:-webkit-any-link {
-    color: -webkit-link;
-    cursor: pointer;
-    text-decoration: underline;
-}
-.underlined-tabs--centered {
-    display: block;
-    text-align: center;
-}
-.underlined-tabs {
-    -webkit-overflow-scrolling: touch;
-    overflow-x: auto;
-    white-space: nowrap;
-    display: -webkit-box;
-    display: flex;
-} */
+
 .list__el {
     font-size: 17px;
     line-height: 26px;

@@ -39,7 +39,6 @@ const Orientation = (props) => {
         <div
           className="choice__params--clear"
           onClick={(event) => props.funt(event, ``)}
-          // onClick={() => setprops.Size("")}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -54,9 +53,6 @@ const Orientation = (props) => {
       <ul className="choice__params__el__options">
         <li data-active={props.size === "" ? true : false}>
           <div
-            //   onClick={() =>
-            //     { setprops.Size(``);
-            //    setCurrentPage(1);}}
             onClick={(event) => props.funt(event, ``)}
           >
             <span>{t("allS")}</span>
@@ -64,9 +60,6 @@ const Orientation = (props) => {
         </li>
         <li data-active={props.size === "large" ? true : false}>
           <div
-            //   onClick={() =>
-            //     { setprops.Size(`large`);
-            //    setCurrentPage(1);}}
             onClick={(event) => props.funt(event, `large`)}
           >
             <span>
@@ -117,9 +110,6 @@ const Orientation = (props) => {
         </li>
         <li data-active={props.size === "medium" ? true : false}>
           <div
-            //   onClick={() =>
-            //     { setprops.Size(`medium`);
-            //    setCurrentPage(1);}}
             onClick={(event) => props.funt(event, `medium`)}
           >
             <span>
@@ -170,10 +160,6 @@ const Orientation = (props) => {
         </li>
         <li data-active={props.size === "small" ? true : false}>
           <div
-            //   onClick={() =>
-            //     { setprops.Size(`small`);
-            //    setCurrentPage(1);}
-            //   }
             onClick={(event) => props.funt(event, `small`)}
           >
             <span>

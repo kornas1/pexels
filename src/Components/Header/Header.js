@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Search from "../Search/Search";
 import "../style.css";
@@ -14,7 +13,6 @@ const Header = (props) => {
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
   };
-  //console.log(props)
 
   const listenScrollEvent = (event) => {
     if (window.scrollY < 170) {
@@ -26,21 +24,12 @@ const Header = (props) => {
     }
   };
 
-  // const listenScroll = (event) => {
-  //       return setHeader("js-main-nav-bar  main-nav-bar ");
-  // }
-
   useEffect(() => {
-    // console.log(props.props);
     setHeader("js-main-nav-bar js-main-nav-bar--transparent main-nav-bar");
     if (props.props === 1) {
       window.addEventListener("scroll", listenScrollEvent);
       return () => window.removeEventListener("scroll", listenScrollEvent);
     } else setHeader("js-main-nav-bar main-nav-bar");
-    // window.addEventListener('scroll', listenScroll);
-    // return setHeader("js-main-nav-bar main-nav-bar ");
-    // return () =>
-    //   window.removeEventListener('scroll', listenScroll);
   }, []);
 
   return (
@@ -71,7 +60,6 @@ const Header = (props) => {
 
           <div
             className="hide-when-mid-size-and-smaller main-nav-bar__logo__text"
-            // href="/ru-ru/"
           >
             Pexels
           </div>
@@ -83,8 +71,8 @@ const Header = (props) => {
           <div data-dropdown="explore">
             <a
               className="main-nav-bar__sub-nav__item"
-              data-track-action="navbar"
-              data-track-label="explore"
+              // data-track-action="navbar"
+              // data-track-label="explore"
               href="/ru-ru/discover/"
             >
               {t("explore")}
@@ -94,8 +82,8 @@ const Header = (props) => {
         <li className="hide-when-mid-size-and-smaller">
           <a
             className="main-nav-bar__sub-nav__item"
-            data-track-action="navbar"
-            data-track-label="license"
+            // data-track-action="navbar"
+            // data-track-label="license"
             href="/ru-ru/license/"
           >
             {t("license")}
@@ -105,23 +93,13 @@ const Header = (props) => {
         <li className="hide-when-mid-size-and-smaller">
           <a
             className="main-nav-bar__sub-nav__item"
-            data-track-action="navbar"
-            data-track-label="submit-photos"
+            // data-track-action="navbar"
+            // data-track-label="submit-photos"
             href="/ru-ru/join-contributor/"
           >
             {t("upload")}
           </a>
         </li>
-        {/* <li className='#'>
-                <div className='#' data-dropdown='ellipsis'>
-                <button className='main-nav-bar__sub-nav__item #'>
-                    <i>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
-                    </i>
-                </button>
-                </div>
-            </li> */}
         <li
           className={`${open ? "drop active" : "drop"}`}
           onMouseOver={() => {
@@ -171,57 +149,6 @@ const Header = (props) => {
                   </li>
                   <li
                     className="dropdown__el__content__el"
-                    //                 onClick={() => {
-                    //                     /////////////////////////////
-                    //                     <div className="switch-locale">
-                    //   <span
-                    //     className="switch-locale__close"
-                    //     onClick={() => {
-                    //     //   props.updateData();
-                    //     }}>
-                    //     ✕
-                    //   </span>
-                    //   <span className="switch-locale__title">Choose your language:</span>
-                    //   <ul
-                    //     onClick={() => {
-                    //     //   props.updateData();
-                    //     }}>
-                    //     <li
-                    //       className="locale__option locale__option--main"
-                    //       value="en-US"
-                    //       rel="nofollow"
-                    //       onClick={() => {
-                    //         // changeLang('en-US');
-                    //       }}>
-                    //       <img
-                    //         width="36"
-                    //         height="26"
-                    //         className="locale__flag"
-                    //         alt="flag"
-                    //          src="https://www.pexels.com/assets/flags/en-US-9ac49f52fbe3cc86ef500da8d7dfac4468c0e98419808425a9cdc1af7714cee1.png"
-                    //       />
-                    //       <span>English</span>
-                    //     </li>
-
-                    //     <li
-                    //       className="locale__option locale__option--main"
-                    //       value="ru-RU"
-                    //       rel="nofollow"
-                    //       onClick={() => {
-                    //         // changeLang('ru-RU');
-                    //       }}>
-                    //       <img
-                    //         width="36"
-                    //         height="26"
-                    //         className="locale__flag"
-                    //         alt="flag"
-                    //          src="https://www.pexels.com/assets/flags/ru-RU-95c9aa90687ba690ada7173b898561d1bdde41742b76b28c396255f2f200fe98.png"
-                    //       />
-                    //       <span>Русский</span>
-                    //     </li>
-                    //   </ul>
-                    // </div>
-                    // }}
                   >
                     {" "}
                     <span className="language">
@@ -229,9 +156,6 @@ const Header = (props) => {
                         {t("language")}
                         &nbsp;
                         <span
-                          //  className="locale"
-                          // value="en-US"
-                          // rel="nofollow"
                           onClick={() => {
                             changeLanguage("en");
                           }}
@@ -243,12 +167,8 @@ const Header = (props) => {
                             alt="flag"
                             src="https://www.pexels.com/assets/flags/en-US-9ac49f52fbe3cc86ef500da8d7dfac4468c0e98419808425a9cdc1af7714cee1.png"
                           />
-                          {/* <span>English</span> */}
                         </span>
                         <span
-                          //  className="locale"
-                          // value="ru-RU"
-                          // rel="nofollow"
                           onClick={() => {
                             changeLanguage("ru");
                           }}
@@ -260,15 +180,7 @@ const Header = (props) => {
                             alt="flag"
                             src="https://www.pexels.com/assets/flags/ru-RU-95c9aa90687ba690ada7173b898561d1bdde41742b76b28c396255f2f200fe98.png"
                           />
-                          {/* <span>Русский</span> */}
                         </span>
-                        {/* <img
-                        width="36"
-                        height="26"
-                        className="locale__flag"
-                        // src={Flags[curLang] || Flags['en-US']}
-                       alt="flag"
-                      /> */}
                       </div>
                     </span>
                   </li>
@@ -277,7 +189,6 @@ const Header = (props) => {
                   </li>
                   <li className="dropdown__el__content__el">
                     <a href="https://www.pexels.com/pro/">
-                      {/* {t("title")} */}
                       {t("appsPlugins")}
                     </a>
                   </li>
@@ -431,37 +342,14 @@ const Header = (props) => {
         <li className="buttonjoin">
           <a
             className="main-nav-bar__sub-nav__item main-nav-bar__sub-nav__item--button"
-            data-track-action="navbar"
-            data-track-label="signup"
+            // data-track-action="navbar"
+            // data-track-label="signup"
             href="/ru-ru/onboarding/"
           >
             {" "}
             {t("join")}
           </a>
         </li>
-
-        {/* <!-- <li className='js-lazy-dropdown show-when-hame-is-visible' data-dropdown='ham'>
-                <button className='js-nav-ham main-nav-bar__sub-nav__item'>
-                    <i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
-                    </i>
-                </button>
-            </li> --> */}
-        {/* <li 
-        class="show-when-hame-is-visible"
-        >
-          <button class="js-nav-ham main-nav-bar__sub-nav__item">
-            <i>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-              </svg>
-            </i>
-          </button>
-        </li> */}
       </ul>
     </nav>
   );

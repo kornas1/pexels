@@ -55,22 +55,13 @@ const Orientation = (props) => {
           <div
             onClick={(event) => {
               props.fun(event, "");
-              //   setOrientation("");
-              //  setCurrentPage(1);
             }}
-            // onClick={() =>
-            //   params.update(size !== '' ? '/?size=' + size : '') }
           >
             <span>{t("all")}</span>
           </div>
         </li>
         <li data-active={props.orientation === "landscape" ? true : false}>
           <div
-            //   onClick={() =>
-            //  {
-            //   // setOrientation(`landscape`);
-            //   // setCurrentPage(1);
-            //   }
             onClick={(event) => props.fun(event, `landscape`)}
           >
             <span>
@@ -103,13 +94,7 @@ const Orientation = (props) => {
         </li>
         <li data-active={props.orientation === "portrait" ? true : false}>
           <div
-            //  onClick={() =>
-            //     {
-            //       // setOrientation(`portrait`);
-            //       // setCurrentPage(1);
-            //   }
             onClick={(event) => props.fun(event, `portrait`)}
-            // }
           >
             <span>
               <i className="rd__svg-icon-search">
@@ -142,10 +127,6 @@ const Orientation = (props) => {
         </li>
         <li data-active={props.orientation === "square" ? true : false}>
           <div
-            //  onClick={() =>
-            // //   { setOrientation(`square`);
-            // //  setCurrentPage(1);}
-            // }
             onClick={(event) => props.fun(event, `square`)}
           >
             <span>

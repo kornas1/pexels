@@ -1,33 +1,24 @@
 import React, { useEffect, useState,  useCallback } from "react";
-// import { Link } from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Header from "../Components/Header/Header";
 import Photo from "../Components/Photo/Photo";
 import Choice from "../Components/Choice/Choice";
 import Size from "../Components/Size/Size";
-//import { useSearchTerm } from '../models/SearchTerm/use';
 import "../Components/style.css";
 import Orientation from "../Components/Orientation/Orientation";
 import { connect } from "react-redux";
 import { getCategoryImages } from "../actions/category";
 import { setSearchItem } from "../actions/search";
 import { useTranslation } from "react-i18next";
-//import { getValue } from '@testing-library/user-event/dist/utils';
 
 //const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 
 const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
   const { t, i18n } = useTranslation();
-  // const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  // const [, setFetching] = useState(true);
   const [word, setWord] = useState(search.search ? search.search : "");
-  // const [totalresults, setTotalPhotos] = useState(0);
   const [orientation, setOrientation] = useState("");
-  // const [category, setCategory] = useState(false);
-  // const [open, setOpen] = useState(false);
   const [size, setSize] = useState("");
-  //let str = "";
 
   const handleSubmit = useCallback(
     (event) => {
@@ -51,10 +42,8 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
     setCurrentPage(1);
   };
 
-  //str = (orientation===``? ``: `&orientation=`)+orientation+(size===``? ``: `&size=`)+size;
 
   const fetchData = useCallback(async () => {
-    //  console.log(orientation);
     console.log("fetch");
     getCategoryImages({
       page: currentPage || 0,
@@ -63,27 +52,6 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
       orientation: orientation === `` ? null : orientation,
       size: size === `` ? null : size,
     });
-    // await fetch(
-    //   `https://api.pexels.com/v1/search?page=${currentPage || 0}&query=${search.search}&per_page=40${str}`,
-    //   {
-    //     method: 'GET',
-    //     headers: {
-    //       Authorization: API_KEY,
-    //     },
-    //   }
-    // )
-    // .then((response) => response.json())
-    // .then((data) => {
-    //   if(data && data.photos){
-    //       if (currentPage === 1) {
-    //           setItems(data.photos);
-    //       } else {
-    //           setItems([...items, ...data.photos]);
-    //       }
-    //       setTotalPhotos(data.total_results);
-    //   }
-    // })
-    // .finally(() => setFetching(false));
   }, [search.search, currentPage, orientation, size]);
 
   const loadMore = useCallback(() => {

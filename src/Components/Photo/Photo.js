@@ -2,10 +2,6 @@ import Masonry from "react-masonry-css";
 import React from "react";
 import { saveAs } from "file-saver";
 import Like from "../Like/Like";
-//import { useTranslation } from "react-i18next";
-// import { useDispatch, useSelector } from "react-redux";
-// import React, { useEffect, useState } from 'react';
-//import { Link } from 'react-router-dom';
 import "../style.css";
 
 const Columns = {
@@ -15,8 +11,6 @@ const Columns = {
 };
 
 const Photo = (items) => {
-  // console.log("items",items);
-  //const { t, i18n } = useTranslation();
   return (
     <Masonry
       breakpointCols={Columns}

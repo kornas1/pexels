@@ -16,11 +16,8 @@ import { connect } from "react-redux";
 //const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 
 const Main = ({ setSearchItem, search, getMainImages, main }) => {
- // const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  //const [, setFetching] = useState(true);
   const [back, setBack] = useState({});
-  // const[scroll, setScroll]=useState(1);
   const { t } = useTranslation();
 
   const fetchData = async () => {
@@ -30,46 +27,10 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
       page: currentPage || 0,
       per_page: 40,
     });
-    // await fetch(
-    //     `https://api.pexels.com/v1/curated?page=${currentPage}&per_page=40`,
-    //     {
-    //       method: 'GET',
-    //       headers: {
-    //         Authorization: API_KEY,
-    //       },
-    //     }
-    //   )
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       if(data && data.photos){
-    //       setItems([...items, ...data.photos]);
-    //       setCurrentPage((prevState) => prevState + 1);
-    //       }
-    //     })
-    //     .finally(() => setFetching(false));
   };
 
   const fetchBackground = async () => {
-    // console.log(currentPage)
-    // console.log(items)
-
-    // await fetch(
-    //   `https://api.pexels.com/v1/curated?page=1&per_page=40`,
-    //   {
-    //     method: 'GET',
-    //     headers: {
-    //       Authorization: API_KEY,
-    //     },
-    //   }
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     if(data && data.photos){
-    // setBack(data.photos[Math.floor( Math.random() * 40)])
     setBack(main.data[Math.floor(Math.random() * 40)]);
-    //   }
-    // })
-    // .finally(() => setFetching(false));
   };
 
   const loadMore = useCallback(() => {
@@ -77,7 +38,6 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
   }, [currentPage]);
 
   useEffect(() => {
-    // fetchBackground();
     setSearchItem("");
   }, []);
 
@@ -112,11 +72,6 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
                   <ul>
                     <Hint />
                     &nbsp;
-                    {/* <li className='hero__search-container__search-tags__tag-container__tag'>
-                    <a data-track-action='hero' data-track-label='more-popular-searches' href='/ru-ru/popular-searches/'>
-                    {t("more")}
-                    </a>
-                  </li> */}
                   </ul>
                 </li>
               </ul>

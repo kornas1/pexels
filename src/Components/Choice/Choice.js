@@ -9,8 +9,6 @@ const Choice = (props) => {
       <li>
         <a
           className="active"
-          // href={#}
-          // title={`Free ${params.query} photos`}
         >
           <i className="rd__svg-icon">
             <svg
@@ -36,8 +34,6 @@ const Choice = (props) => {
       </li>
       <li>
         <a href="#">
-          {/* href={`/search/${params.query}`}
-        title={`Free ${params.query} videos`}> */}
           <i className="rd__svg-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +50,6 @@ const Choice = (props) => {
       </li>
       <li>
         <a href="#">
-          {/* href={`/search/${params.query}`}> */}
           <i className="rd__svg-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"

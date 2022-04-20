@@ -3,49 +3,15 @@ import { useLocalStorage } from "../../useLocalStorage.js";
 import "../style.css";
 
 const Like = (id) => {
-  // const [like, setlike] = useState(0);
   const [like, setlike] = useLocalStorage(id.id, 0);
 
   const ChangeLike = (like) => {
     if (like === 0) {
       setlike(1);
     } else {
-      // likes=0;
       setlike(0);
     }
   };
-
-  // const h=(id)=>{
-  //       if(like.includes(id)) {
-  //       var temp = like.indexOf(id);
-  //         if (temp !== -1) {
-  //             like.splice(temp, 1);
-  //     console.log(like);
-  //   }} else
-  //    {like.push(id);
-  //   console.log(like);
-  //   };
-
-  // const handleClick = (id) => {
-  //     if(likes.includes(id)) {
-  //       removeLike(id)
-  //     }
-  //     else {
-  //       likes.push(photo.id)
-  //     }
-  // }
-  //  const likes = useSelector((state) => state.likes);
-  // const dispatch = useDispatch();
-  // const h=(id)=>{
-  //   if(likes.includes(id)) {
-  //       var temp = likes.indexOf(id);
-  //         if (temp !== -1) {likes.splice(temp, 1);
-  //     console.log(likes);
-  //   }} else
-  //    {likes.push(id);
-  //   console.log(likes);
-  //   };
-  //      }
 
   return (
     <button
