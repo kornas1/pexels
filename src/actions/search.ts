@@ -1,7 +1,7 @@
 export const SET_SEARCH_ITEM = "SET_SEARCH_ITEM";
 
 export interface Params{
-    search: string
+    search: {search:string}
 }
 
 export const setSearchItem = (params: Params) => ({

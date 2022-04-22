@@ -7,7 +7,6 @@ import Search from "../Components/Search/Search";
 import Hint from "../Components/Hint/Hint";
 import Photo from "../Components/Photo/Photo";
 import List from "../Components/List/List";
-// import "../Components/style.css";
 import "../main.css";
 import { useTranslation } from "react-i18next";
 import { setSearchItem } from "../actions/search";
@@ -15,26 +14,73 @@ import { getMainImages } from "../actions/main";
 import { connect } from "react-redux";
 
 //const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+interface Props{
+  search: { search: string },
+  setSearchItem: (event:string) => void,
+  getMainImages: ({}) => void,
+  main:any
+}
 
-const Main = ({ setSearchItem, search, getMainImages, main }) => {
+ export interface IBack{
+  id?: number,
+  width?: number,
+  height?: number,
+  url?: string,
+  photographer?: string,
+  photographer_url?: string,
+  photographer_id?: number,
+  avg_color?: string,
+  src?:{
+    original?: string,
+    large2x?: string,
+    large?: string,
+    medium?: string,
+    small?: string,
+    portrait?: string,
+    landscape?: string,
+    tiny?: string,
+  },
+  liked?: boolean,
+  alt?: string,
+  map?: any
+}
+const Main = ({ setSearchItem, search, getMainImages, main }:Props) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [back, setBack] = useState({});
+
+  const [back, setBack] = useState<IBack>({
+     id: 0,
+    width: 0,
+    height: 0,
+    url: "",
+    photographer: "",
+    photographer_url: "",
+    photographer_id: 0,
+    avg_color: "",
+    src:{
+      original: "",
+      large2x: "",
+      large: "",
+      medium: "",
+      small: "",
+      portrait: "",
+      landscape: "",
+      tiny: "",
+    },
+    liked: false,
+    alt: "",
+    map:""
+  });
   const { t } = useTranslation();
 
   const fetchData = async () => {
-    console.log("fetch");
-
     getMainImages({
       page: currentPage || 0,
       per_page: 40,
     });
-
   };
 
   const fetchBackground = async () => {
-
     setBack(main.data[Math.floor(Math.random() * 40)]);
-  
   };
 
   const loadMore = useCallback(() => {
@@ -42,6 +88,7 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
   }, [currentPage]);
 
   useEffect(() => {
+    localStorage.setItem("search", "");
     setSearchItem("");
   }, []);
 
@@ -56,7 +103,7 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
   return (
     <div>
       <Header props={1} />
-       <header className="hero">
+      <header className="hero">
         <div className="hero__background">
           <img src={back.src && back.src.large2x} alt="header" />
         </div>
@@ -76,14 +123,13 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
                   <ul>
                     <Hint />
                     &nbsp;
-              
                   </ul>
                 </li>
               </ul>
             </div>
           </div>
         </section>
-      </header> 
+      </header>
       <List />
 
       <div className="phot-col">
@@ -111,7 +157,7 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
           loader={<h4>{t("loading")}</h4>}
           endMessage={
             <p style={{ textAlign: "center" }}>
-              <b>Yay! You have seen it all</b>
+              <b>{t("could")}</b>
             </p>
           }
         >
@@ -123,16 +169,17 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state:any) => ({
   search: state.search,
   main: state.main,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch:any) => {
   return {
-    getMainImages: (params) => dispatch(getMainImages(params)),
-    setSearchItem: (params) => dispatch(setSearchItem(params)),
+    getMainImages: (params:Props) => dispatch(getMainImages(params)),
+    setSearchItem: (params:Props) => dispatch(setSearchItem(params)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main as any);

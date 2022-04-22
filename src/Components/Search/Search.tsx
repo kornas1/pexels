@@ -4,35 +4,38 @@ import "../style.css";
 import { useTranslation } from "react-i18next";
 import { setSearchItem } from "../../actions/search";
 import { connect } from "react-redux";
+import { HintType, Params} from "../Hint/Hint"
 
-const Search = ({ search, setSearchItem, onSubmit=null }) => {
-  const { t,  } = useTranslation();
+interface Props{
+  search: {search: string},
+  setSearchItem: (event:string) => void,
+  submitprops: any
+}
+
+const Search = ({ search, setSearchItem,  submitprops=null}:Props) => {
+  const { t  } = useTranslation();
+  const prevSearch = localStorage.getItem("search") || '';
   return (
     <div className="main-nav-bar__search-bar">
       <form
         onSubmit={(event) => {
-          onSubmit(event);
+          submitprops(event);
         }}
         autoComplete="off"
         className="search-bar"
-        // data-search-urls-photo="/ru-ru/search/---query/"
-        // data-search-urls-query-placeholder="---query"
-        // data-search-urls-video="/ru-ru/search/videos/---query/"
         method="get"
         role="search"
       >
         <div className="search-bar__container">
           <input
-            value={search.search}
+            value={search.search|| prevSearch}
             onChange={(event) => {
               setSearchItem(event.target.value);
             }}
             autoCapitalize="none"
             autoComplete="off"
             id="search"
-            name="s"
             placeholder={t("searchPlaceholder")}
-            required="required"
             type="search"
           />
 
@@ -40,7 +43,7 @@ const Search = ({ search, setSearchItem, onSubmit=null }) => {
             id="search-action"
             title="Поиск стоковых фото"
             type="submit"
-            onClick={(event) => {onSubmit!==null && onSubmit(event)}}
+            onClick={(event) => { submitprops!==null &&  submitprops(event); }}
           >
             <Link to="/search">
               <i className="rd__svg-icon">
@@ -61,14 +64,14 @@ const Search = ({ search, setSearchItem, onSubmit=null }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state:any) => ({
   search: state.search,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch:any) => {
   return {
-    setSearchItem: (params) => dispatch(setSearchItem(params)),
+    setSearchItem: (params:Params) => dispatch(setSearchItem(params)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Search as any);

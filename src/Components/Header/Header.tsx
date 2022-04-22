@@ -4,17 +4,24 @@ import Search from "../Search/Search";
 import "../style.css";
 import { useTranslation } from "react-i18next";
 
-const Header = (props) => {
+
+interface SizeTypes{
+  props: number,
+  funct?: any,
+  // onClick: (event: React.MouseEvent<HTMLElement>) => void,
+}
+
+const Header = (props:SizeTypes) => {
   const [header, setHeader] = useState("header");
   const [open, setOpen] = useState(false);
 
   const { t, i18n } = useTranslation();
 
-  const changeLanguage = (language) => {
+  const changeLanguage = (language:string) => {
     i18n.changeLanguage(language);
   };
 
-  const listenScrollEvent = (event) => {
+  const listenScrollEvent = (event: Event) => {
     if (window.scrollY < 170) {
       return setHeader(
         "js-main-nav-bar js-main-nav-bar--transparent main-nav-bar"
@@ -37,7 +44,6 @@ const Header = (props) => {
       <Link to="/">
         <div
           className="main-nav-bar__logo"
-          href="/ru-ru/"
           title="Бесплатные стоковые фото"
         >
           <div className="main-nav-bar__logo__img">
@@ -65,14 +71,15 @@ const Header = (props) => {
           </div>
         </div>
       </Link>
-      <Search onSubmit={props.fun} />
+      <Search
+     // @ts-ignore
+       submitprops={props.funct}
+        />
       <ul className="main-nav-bar__sub-nav dots">
         <li className="hide-when-mid-size-and-smaller">
           <div data-dropdown="explore">
             <a
               className="main-nav-bar__sub-nav__item"
-              // data-track-action="navbar"
-              // data-track-label="explore"
               href="/ru-ru/discover/"
             >
               {t("explore")}
@@ -82,8 +89,6 @@ const Header = (props) => {
         <li className="hide-when-mid-size-and-smaller">
           <a
             className="main-nav-bar__sub-nav__item"
-            // data-track-action="navbar"
-            // data-track-label="license"
             href="/ru-ru/license/"
           >
             {t("license")}
@@ -93,8 +98,6 @@ const Header = (props) => {
         <li className="hide-when-mid-size-and-smaller">
           <a
             className="main-nav-bar__sub-nav__item"
-            // data-track-action="navbar"
-            // data-track-label="submit-photos"
             href="/ru-ru/join-contributor/"
           >
             {t("upload")}
@@ -152,7 +155,7 @@ const Header = (props) => {
                   >
                     {" "}
                     <span className="language">
-                      <div className="flag" href="#" rel="nofollow noreferrer">
+                      <div className="flag">
                         {t("language")}
                         &nbsp;
                         <span
@@ -342,8 +345,6 @@ const Header = (props) => {
         <li className="buttonjoin">
           <a
             className="main-nav-bar__sub-nav__item main-nav-bar__sub-nav__item--button"
-            // data-track-action="navbar"
-            // data-track-label="signup"
             href="/ru-ru/onboarding/"
           >
             {" "}

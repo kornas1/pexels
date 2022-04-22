@@ -6,7 +6,7 @@ import "../style.css";
 interface OrientationTypes{
   orientation: string,
   fun: (event:React.MouseEvent<HTMLElement>, temp:string) => void  
-  onClick: (event: React.MouseEvent<HTMLElement>) => void,
+  // onClick: (event: React.MouseEvent<HTMLElement>) => void,
 }
 
 const Orientation = (props:OrientationTypes) => {

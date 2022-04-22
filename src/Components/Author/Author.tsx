@@ -1,20 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import {IBack} from "../../Pages/Main"
 import "../style.css";
-// import {back} from "../../Pages/Main"
-// interface MessageProps {
-//   back: string;
-// }
 
-interface BackTypes{
-  back:{
-    photographer_url: string,
-    photographer: string
+  interface BackTypes{
+    back:IBack
   }
-}
 
-
-const Author = (back: BackTypes) => {
+  const Author = (back: BackTypes) => {
   const { t } = useTranslation();
   return (
     <div className="hero__footer">

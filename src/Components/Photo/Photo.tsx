@@ -10,14 +10,23 @@ const Columns = {
   1079: 2,
 };
 
-// interface ItemTypes{
-//   items:{
-//     photographer_url: string,
-//     photographer: string
-//   }
-// }
+interface ItemTypes{
+  items: PhotosTypes,
+}
 
-const Photo = (items) => {
+interface PhotosTypes{
+  map: any;
+    id?: any,
+   src?: {
+     medium:string,
+     original: string,
+   }
+   photographer_url?:string,
+   photographer?: string,
+   
+}
+
+const Photo = (items:ItemTypes) => {
   return (
     <Masonry
       breakpointCols={Columns}
@@ -25,7 +34,7 @@ const Photo = (items) => {
       columnClassName="my-masonry-grid_column"
     >
       {items
-        ? items.items.map((photo) => (
+        ? items.items.map((photo:PhotosTypes) => (
             <div key={photo.id} className="phot-col__photos__el">
               <article className="phot-col__photos__el__article">
                 <a
@@ -36,7 +45,6 @@ const Photo = (items) => {
                     srcSet={photo.src ? photo.src.medium : ""}
                     className="photo-item__img"
                     alt="Фотография"
-                    // style={{ backgroundColor: photo.avg_color }}
                   />
                 </a>
                 <div className="phot-col__photos__el--hov">
@@ -59,7 +67,8 @@ const Photo = (items) => {
                     <div
                       className="phot-col__photos__el__tabs__el phot-col__photos__el__tabs--download"
                       onClick={() =>
-                        saveAs(photo.src ? photo.src.original : "", photo.id)
+                        {saveAs(photo.src ? photo.src.original : "", photo.id);
+                    }
                       }
                     >
                       <i>

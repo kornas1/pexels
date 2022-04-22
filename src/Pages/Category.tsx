@@ -1,4 +1,4 @@
-import React, { useEffect, useState,  useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Header from "../Components/Header/Header";
 import Photo from "../Components/Photo/Photo";
@@ -12,47 +12,51 @@ import { setSearchItem } from "../actions/search";
 import { useTranslation } from "react-i18next";
 
 //const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+interface Props{
+  search:{search:string},
+  setSearchItem: (event:string) => void,
+  getCategoryImages: ({}) => void,
+  category:any
+}
 
-const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
-  const { t} = useTranslation();
+const Category = ({ search, getCategoryImages, category, setSearchItem }:Props) => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
-  const [word, setWord] = useState(search.search ? search.search : "");
+  const [word, setWord] = useState<string>(search.search ? search.search : "");
   const [orientation, setOrientation] = useState("");
   const [size, setSize] = useState("");
 
-  const handleSubmit = useCallback(
-    (event) => {
+  const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       setCurrentPage(1);
       setWord(search.search);
+      localStorage.setItem("search", search.search);
       if (currentPage === 1) {
         fetchData();
       }
     },
-    [currentPage, search.search]
+    [currentPage, search.search, word]
   );
 
-  const FilterChange = (event, temp) => {
+  const FilterChange = (event:React.MouseEvent<HTMLElement>, temp:string) => {
     setOrientation(temp);
     setCurrentPage(1);
   };
 
-  const SizeChange = (event, temp) => {
+  const SizeChange = (event:React.MouseEvent<HTMLElement>, temp:string) => {
     setSize(temp);
     setCurrentPage(1);
   };
 
-
   const fetchData = useCallback(async () => {
-    console.log("fetch");
     getCategoryImages({
       page: currentPage || 0,
-      query: search.search ? search.search : "",
+      query: word || localStorage.getItem("search"),
       per_page: 40,
       orientation: orientation === `` ? null : orientation,
       size: size === `` ? null : size,
     });
-  }, [search.search, currentPage, orientation, size]);
+  }, [word, currentPage, orientation, size]);
 
   const loadMore = useCallback(() => {
     setCurrentPage(currentPage + 1);
@@ -60,13 +64,11 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
 
   useEffect(() => {
     fetchData();
-  }, [currentPage, orientation, size]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  console.log(category.data);
+  }, [currentPage, orientation, size, word]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
-      <Header props={0} fun={handleSubmit} />
+      <Header props={0} funct={handleSubmit} />
 
       <div className="search-photos">
         <div className="choice">
@@ -87,16 +89,15 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
                     <path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42zM6.92 19L5 17.08l8.06-8.06 1.92 1.92L6.92 19z"></path>
                   </svg>
                 </i>
-                <span className="choice__params--span">
-                  {t("color")}
-                  {/* <FormattedMessage id="color" /> */}
-                </span>
+                <span className="choice__params--span">{t("color")}</span>
               </button>
             </li>
           </ul>
         </div>
         <div className="search-photos__header">
-          <h1>{word} {t("photos")}</h1>
+          <h1>
+            {word || localStorage.getItem("search")} {t("photos")}
+          </h1>
         </div>
       </div>
       <InfiniteScroll
@@ -106,7 +107,7 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
         loader={<h4>Loading...</h4>}
         endMessage={
           <p style={{ textAlign: "center" }}>
-            <b>Yay! You have seen it all</b>
+            <b>{t("could")}</b>
           </p>
         }
       >
@@ -117,16 +118,16 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state:any) => ({
   search: state.search,
   category: state.category,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch:any) => {
   return {
-    getCategoryImages: (params) => dispatch(getCategoryImages(params)),
-    setSearchItem: (params) => dispatch(setSearchItem(params)),
+    getCategoryImages: (params:Props) => dispatch(getCategoryImages(params)),
+    setSearchItem: (params:Props) => dispatch(setSearchItem(params)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Category);
+export default connect(mapStateToProps, mapDispatchToProps)(Category as any);
