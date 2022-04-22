@@ -39,7 +39,7 @@ const Photo = (items:ItemTypes) => {
               <article className="phot-col__photos__el__article">
                 <a
                   className="phot-col__photos__el__link"
-                  href={`https://www.pexels.com/ru-ru/photo/${photo.id}/`}
+                  // href={`https://www.pexels.com/ru-ru/photo/${photo.id}/`}
                 >
                   <img
                     srcSet={photo.src ? photo.src.medium : ""}
@@ -50,6 +50,7 @@ const Photo = (items:ItemTypes) => {
                 <div className="phot-col__photos__el--hov">
                   <a
                     className="phot-col__photos__el__author"
+                    target="_blank"
                     href={photo.photographer_url}
                   >
                     <img
