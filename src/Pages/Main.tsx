@@ -102,17 +102,17 @@ const Main = ({ setSearchItem, search, getMainImages, main }:Props) => {
 
   return (
     <div>
-      <Header props={1} />
+      <Header props={1}/>
       <header className="hero">
         <div className="hero__background">
           <img src={back.src && back.src.large2x} alt="header" />
         </div>
-        <Author back={back} />
+        <Author back={back}/>
 
         <section className="hero__content hero__content--centered">
           <h1 className="hero__title">{t("searchTitle")}</h1>
           <div className="hero__search-container">
-            <Search />
+            <Search/>
             <div className="hero__search-container__search-tags">
               <ul className="hero__search-container__search-tags__tag-container">
                 <li className="hero__search-container__search-tags__tag-container__suggested">
