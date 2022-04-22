@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "../style.css";
 
-const Orientation = (props) => {
+interface SizeTypes{
+  size: string,
+  funt: (event:React.MouseEvent<HTMLElement>, temp:string) => void  
+  onClick: (event: React.MouseEvent<HTMLElement>) => void,
+}
+
+
+const Size = (props: SizeTypes) => {
   const [open, setOpen] = useState(false);
   const { t} = useTranslation();
   return (
@@ -213,4 +220,4 @@ const Orientation = (props) => {
   );
 };
 
-export default Orientation;
+export default Size;

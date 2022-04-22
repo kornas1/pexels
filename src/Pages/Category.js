@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 //const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 
 const Category = ({ search, getCategoryImages, category, setSearchItem }) => {
-  const { t, i18n } = useTranslation();
+  const { t} = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [word, setWord] = useState(search.search ? search.search : "");
   const [orientation, setOrientation] = useState("");

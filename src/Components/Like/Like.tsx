@@ -2,10 +2,14 @@ import React from "react";
 import { useLocalStorage } from "../../useLocalStorage.js";
 import "../style.css";
 
-const Like = (id) => {
+interface LikeTypes{
+  id:number
+}
+
+const Like = (id:LikeTypes) => {
   const [like, setlike] = useLocalStorage(id.id, 0);
 
-  const ChangeLike = (like) => {
+  const ChangeLike = (like:number) => {
     if (like === 0) {
       setlike(1);
     } else {

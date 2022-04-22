@@ -7,7 +7,8 @@ import Search from "../Components/Search/Search";
 import Hint from "../Components/Hint/Hint";
 import Photo from "../Components/Photo/Photo";
 import List from "../Components/List/List";
-import "../Components/style.css";
+// import "../Components/style.css";
+import "../main.css";
 import { useTranslation } from "react-i18next";
 import { setSearchItem } from "../actions/search";
 import { getMainImages } from "../actions/main";
@@ -27,10 +28,13 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
       page: currentPage || 0,
       per_page: 40,
     });
+
   };
 
   const fetchBackground = async () => {
+
     setBack(main.data[Math.floor(Math.random() * 40)]);
+  
   };
 
   const loadMore = useCallback(() => {
@@ -52,7 +56,7 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
   return (
     <div>
       <Header props={1} />
-      <header className="hero">
+       <header className="hero">
         <div className="hero__background">
           <img src={back.src && back.src.large2x} alt="header" />
         </div>
@@ -72,13 +76,14 @@ const Main = ({ setSearchItem, search, getMainImages, main }) => {
                   <ul>
                     <Hint />
                     &nbsp;
+              
                   </ul>
                 </li>
               </ul>
             </div>
           </div>
         </section>
-      </header>
+      </header> 
       <List />
 
       <div className="phot-col">

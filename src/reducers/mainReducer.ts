@@ -1,6 +1,7 @@
-import * as types from "../actions/category";
+import * as types from "../actions/main";
+ import {PhotoMain, ActionTypesCreator} from "../types";
 
-const initialState = {
+const initialState: PhotoMain = {
   data: [],
   per_page: 0,
   total_results: 0,
@@ -8,15 +9,15 @@ const initialState = {
   next_page: null,
   loading: false,
 };
-//обрабатывает логику экшона
-const categoryReducer = (state = initialState, action) => {
+
+const mainReducer = (state = initialState, action: ActionTypesCreator) => {
   switch (action.type) {
-    case types.GET_CATEGORY_IMAGES:
+    case types.GET_MAIN_IMAGES:
       return {
         ...state,
         loading: true,
       };
-    case types.GET_CATEGORY_IMAGES_SUCCESS:
+    case types.GET_MAIN_IMAGES_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -29,7 +30,7 @@ const categoryReducer = (state = initialState, action) => {
         total_results: action.payload.total_results,
         next_page: action.payload.next_page,
       };
-    case types.GET_CATEGORY_IMAGES_ERROR:
+    case types.GET_MAIN_IMAGES_ERROR:
       return {
         ...state,
         loading: false,
@@ -39,4 +40,4 @@ const categoryReducer = (state = initialState, action) => {
   }
 };
 
-export default categoryReducer;
+export default mainReducer;

@@ -10,6 +10,13 @@ const Columns = {
   1079: 2,
 };
 
+// interface ItemTypes{
+//   items:{
+//     photographer_url: string,
+//     photographer: string
+//   }
+// }
+
 const Photo = (items) => {
   return (
     <Masonry

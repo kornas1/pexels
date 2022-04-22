@@ -11,6 +11,7 @@ export const getMainImages = (params) => {
       const response = await getImagesMain(params);
       const { success, results } = response;
       if (success) {
+        console.log(results);
         dispatch({ type: GET_MAIN_IMAGES_SUCCESS, payload: results });
       }
     } catch (error) {

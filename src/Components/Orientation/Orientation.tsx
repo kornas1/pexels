@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "../style.css";
 
-const Orientation = (props) => {
+
+interface OrientationTypes{
+  orientation: string,
+  fun: (event:React.MouseEvent<HTMLElement>, temp:string) => void  
+  onClick: (event: React.MouseEvent<HTMLElement>) => void,
+}
+
+const Orientation = (props:OrientationTypes) => {
   const [category, setCategory] = useState(false);
   const { t } = useTranslation();
   return (

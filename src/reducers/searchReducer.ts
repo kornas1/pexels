@@ -1,10 +1,11 @@
 import * as types from "../actions/search";
+import {SearchTypes, ActionTypesSearch} from "../types";
 
-const initialState = {
+const initialState: SearchTypes = {
   search: "",
 };
-//обрабатывает логику экшона
-const searchReducer = (state = initialState, action) => {
+
+const searchReducer = (state = initialState, action: ActionTypesSearch) => {
   switch (action.type) {
     case types.SET_SEARCH_ITEM:
       return {

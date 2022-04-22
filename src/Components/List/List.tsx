@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import "../style.css";
 
-const List = () => {
+const List: React.FC = () => {
   const { t} = useTranslation();
   return (
     <div className="list">

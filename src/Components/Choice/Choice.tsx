@@ -2,14 +2,16 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import "../style.css";
 
-const Choice = (props) => {
+interface ChoiceTypes{
+  total_results:number
+}
+
+const Choice = (props: ChoiceTypes) => {
   const { t } = useTranslation();
   return (
     <ul className="choice__element choice__format">
       <li>
-        <a
-          className="active"
-        >
+        <a className="active" href="/search">
           <i className="rd__svg-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +35,7 @@ const Choice = (props) => {
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="https://www.pexels.com/search/videos">
           <i className="rd__svg-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +51,7 @@ const Choice = (props) => {
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="https://www.pexels.com/search/users/">
           <i className="rd__svg-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
