@@ -702,15 +702,15 @@ footer {
   
 }
 
-.phot-col {
+ .phot-col {
   margin: auto;
   padding: 0 1.45rem;
   margin: auto;
-  max-width: 1400px;
-  min-height: 1500px;
+  /* max-width: 1400px; */
+  /* min-height: 1500px; */
   padding-left: 2rem;
   padding-right: 2rem;
-}
+} 
 .phot-col__stock {
   display: flex;
   padding: 0 1.45rem;

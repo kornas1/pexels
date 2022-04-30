@@ -14,7 +14,7 @@ interface Props{
 
 const Search = ({ search, setSearchItem,  submitprops=null}:Props) => {
 const { t  } = useTranslation();
-  const prevSearch = localStorage.getItem("search") || '';
+  // const prevSearch = localStorage.getItem("search") || '';
   return (
     <div className="main-nav-bar__search-bar">
       <form
@@ -28,7 +28,7 @@ const { t  } = useTranslation();
       >
         <div className="search-bar__container">
           <input
-            value={search.search|| prevSearch}
+            value={search.search}
             onChange={(event) => {
               setSearchItem(event.target.value);
             }}
@@ -38,12 +38,14 @@ const { t  } = useTranslation();
             placeholder={t("searchPlaceholder")}
             type="search"
           />
-          <Link to="/search">
+          <Link to={`/search/${(search.search).toLowerCase()}`}>
             <button
               id="search-action"
               title="Поиск стоковых фото"
               type="submit"
-              onClick={(event) => { submitprops!==null &&  submitprops(event); }}
+              onClick={(event) => { submitprops!==null &&  submitprops(event); 
+              }
+            }
             >
                 <i className="rd__svg-icon">
                   <svg

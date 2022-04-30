@@ -26,8 +26,12 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }:Props) 
   const [orientation, setOrientation] = useState("");
   const [size, setSize] = useState("");
 
+  useEffect(() => {
+    setSearchItem(t((window.location.pathname).substring(8)))
+  }, []); 
+
   const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
+      // event.preventDefault();
       setCurrentPage(1);
       setWord(search.search);
       localStorage.setItem("search", search.search);

@@ -68,7 +68,6 @@ const Hint = ({ setSearchItem }:HintType) => {
   };
 
   useEffect(() => {
-    console.log(randomizer())
     setwords(randomizer());
   }, []);
 
@@ -87,7 +86,7 @@ const Hint = ({ setSearchItem }:HintType) => {
   };
 
     return words.map((word:string , index:number) => (
-    <Link key={index} to="search" onClick={() => handleLinkClick(word)}>
+    <Link key={index} to={`/search/${word}`} onClick={() => handleLinkClick(word)}>
       <li
         key={index}
         className="hero__search-container__search-tags__tag-container__tag"

@@ -11,7 +11,7 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/search" element={<Category />} />
+          <Route path="/search/:searchName" element={<Category />} />
         </Routes>
       </BrowserRouter>
     </div>
