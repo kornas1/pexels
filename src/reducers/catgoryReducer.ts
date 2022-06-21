@@ -10,7 +10,7 @@ const initialState: PhotoMain = {
   loading: false,
 };
 
-const categoryReducer = (state = initialState, action: ActionTypesCreator) => {
+const categoryReducer = (state = initialState, action: ActionTypesCreator):PhotoMain => {
   switch (action.type) {
     case types.GET_CATEGORY_IMAGES:
       return {

@@ -6,20 +6,20 @@ import Choice from "../Components/Choice/Choice";
 import Size from "../Components/Size/Size";
 import "../Components/style.css";
 import Orientation from "../Components/Orientation/Orientation";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { getCategoryImages } from "../actions/category";
 import { setSearchItem } from "../actions/search";
 import { useTranslation } from "react-i18next";
+import { useTypedSelector } from "../useTypedSelecor";
 
 //const API_KEY = `${process.env.REACT_APP_API_KEY}`;
-interface Props{
-  search:{search:string},
-  setSearchItem: (event:string) => void,
-  getCategoryImages: ({}) => void,
-  category:any
-}
 
-const Category = ({ search, getCategoryImages, category, setSearchItem }:Props) => {
+
+ export const Category = () => {
+  const search = useTypedSelector((state)=>{return state.search})
+  const category = useTypedSelector((state)=>{return state.category})
+  const dispatch = useDispatch();
+
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [word, setWord] = useState<string>(search.search ? search.search : "");
@@ -27,8 +27,8 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }:Props) 
   const [size, setSize] = useState("");
 
   useEffect(() => {
-    setSearchItem(t((window.location.pathname).substring(8)))
-  }, []); 
+    dispatch(setSearchItem(t((window.location.pathname).substring(8))))
+  }, []);
 
   const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
       // event.preventDefault();
@@ -39,7 +39,7 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }:Props) 
         fetchData();
       }
     },
-    [currentPage, search.search, word]
+    [currentPage, search, word]
   );
 
   const FilterChange = (event:React.MouseEvent<HTMLElement>, temp:string) => {
@@ -53,13 +53,13 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }:Props) 
   };
 
   const fetchData = useCallback(async () => {
-    getCategoryImages({
+   dispatch(getCategoryImages({
       page: currentPage || 0,
       query: word || localStorage.getItem("search"),
       per_page: 40,
       orientation: orientation === `` ? null : orientation,
       size: size === `` ? null : size,
-    });
+    }));
   }, [word, currentPage, orientation, size]);
 
   const loadMore = useCallback(() => {
@@ -122,16 +122,4 @@ const Category = ({ search, getCategoryImages, category, setSearchItem }:Props) 
   );
 };
 
-const mapStateToProps = (state:any) => ({
-  search: state.search,
-  category: state.category,
-});
 
-const mapDispatchToProps = (dispatch:any) => {
-  return {
-    getCategoryImages: (params:Props) => dispatch(getCategoryImages(params)),
-    setSearchItem: (params:Props) => dispatch(setSearchItem(params)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Category as any);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../style.css";
 import { Link } from "react-router-dom";
 import { setSearchItem } from "../../actions/search";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 let list = [
@@ -50,24 +50,22 @@ let list = [
 ];
 
 
-export interface HintType{
-  setSearchItem:(params:Params)=>{payload: Params, type: string}
-}
 
-export interface Params{
-  search: { search: string }
-}
-const Hint = ({ setSearchItem }:HintType) => {
+export const Hint = () => {
   const { t } = useTranslation();
   const [words, setwords] = useState<string[]>([]);
+  const dispatch = useDispatch();
  
   const handleLinkClick = (word:string) => {
-    setSearchItem(t(word as unknown as TemplateStringsArray) as unknown as Params);
+    console.log("Hint")
+    console.log(typeof(t(word as unknown as TemplateStringsArray) as string));
+   dispatch(setSearchItem(t(word as unknown as TemplateStringsArray) as string));
     //@ts-ignore
     localStorage.setItem("search", t(word));
   };
 
   useEffect(() => {
+    console.log("Hint")
     setwords(randomizer());
   }, []);
 
@@ -85,31 +83,26 @@ const Hint = ({ setSearchItem }:HintType) => {
     return rands;
   };
 
-    return words.map((word:string , index:number) => (
-    <Link key={index} to={`/search/${word}`} onClick={() => handleLinkClick(word)}>
-      <li
-        key={index}
-        className="hero__search-container__search-tags__tag-container__tag"
-      >
-        <div
-        >
-          {
-          //@ts-ignore
-          t(word)}
-        </div>
-      </li>
-    </Link>
-  ));
-};
+    const fun = () =>{
+     return words.map((word:string , index:number) => (
+        <Link key={index} to={`/search/${word}`} onClick={() => handleLinkClick(word)}>
+          <li
+            key={index}
+            className="hero__search-container__search-tags__tag-container__tag"
+          >
+            <div
+            >
+              {
+              //@ts-ignore
+              t(word)}
+            </div>
+          </li>
+        </Link>
+      ));
+    } 
 
-const mapStateToProps = (state:any) => ({});
-
-const mapDispatchToProps = (dispatch:any) => {
-  return {
-    setSearchItem: (params:Params) => dispatch(setSearchItem(params)),
-  };
+    return <>{fun()}</>
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Hint as any);
 

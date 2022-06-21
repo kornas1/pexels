@@ -1,8 +1,8 @@
 import React from "react";
  import "./main.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Main from "./Pages/Main";
-import Category from "./Pages/Category";
+import {Main} from "./Pages/Main";
+import {Category} from "./Pages/Category";
 import "./i18n";
 
 const App: React.FC = () => {

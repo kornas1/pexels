@@ -1,11 +1,11 @@
 import { Action } from "redux";
 
 export interface PhotoMain{
-    data: [],
+    data: PhotoTypes[],
     per_page: number,
     total_results: number,
     page: number,
-    next_page: null,
+    next_page: null | number,
     loading: boolean,
 }
 
@@ -23,14 +23,14 @@ export interface ActionTypesCreator{
 }
 export interface ActionTypesSearch{
     type: string;
-    payload: SearchTypes;
+    payload: string;
 }
 
 export interface SearchTypes{
     search: string
 }
 
-interface PhotoTypes{
+export interface PhotoTypes{
     alt: string,
     avg_color: string,
     height: number,

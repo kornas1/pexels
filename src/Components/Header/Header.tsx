@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Search from "../Search/Search";
+import {Search} from "../Search/Search";
 import "../style.css";
 import { useTranslation } from "react-i18next";
 
@@ -74,6 +74,7 @@ const Header = (props:SizeTypes) => {
       <Search
      // @ts-ignore
        submitprops={props.funct}
+      
         />
       <ul className="main-nav-bar__sub-nav dots">
         <li className="hide-when-mid-size-and-smaller">

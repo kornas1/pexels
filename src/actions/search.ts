@@ -1,10 +1,13 @@
+import {ActionTypesSearch} from "../types";
 export const SET_SEARCH_ITEM = "SET_SEARCH_ITEM";
 
-export interface Params{
-    search: {search:string}
-}
+//{search:string}
 
-export const setSearchItem = (params: Params) => ({
+// export interface Params{
+//     search: string
+// }
+
+export const setSearchItem = (params: string):ActionTypesSearch => ({
   type: SET_SEARCH_ITEM,
   payload: params,
 });

@@ -7,7 +7,7 @@ interface LikeTypes{
 }
 
 const Like = (id:LikeTypes) => {
- 
+
  const [like, setlike] = useState(localStorage.getItem(String(id.id)) ? 1 : 0);
 
   const ChangeLike = () => {
@@ -38,7 +38,7 @@ const Like = (id:LikeTypes) => {
           <path
             d={
               (
-                // window.localStorage.getItem(String(id.id)) 
+                // window.localStorage.getItem(String(id.id))
               // ||
                like===1
               //  || like===100

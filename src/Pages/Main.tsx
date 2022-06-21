@@ -3,23 +3,18 @@ import React, { useEffect, useState, useCallback } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Author from "../Components/Author/Author";
 import Header from "../Components/Header/Header";
-import Search from "../Components/Search/Search";
-import Hint from "../Components/Hint/Hint";
+import {Search} from "../Components/Search/Search";
+import {Hint} from "../Components/Hint/Hint";
 import Photo from "../Components/Photo/Photo";
 import List from "../Components/List/List";
 import "../main.css";
 import { useTranslation } from "react-i18next";
 import { setSearchItem } from "../actions/search";
 import { getMainImages } from "../actions/main";
-import { connect } from "react-redux";
+import { useTypedSelector } from "../useTypedSelecor";
+import { connect , useDispatch} from "react-redux";
 
 //const API_KEY = `${process.env.REACT_APP_API_KEY}`;
-interface Props{
-  search: { search: string },
-  setSearchItem: (event:string) => void,
-  getMainImages: ({}) => void,
-  main:any
-}
 
  export interface IBack{
   id?: number,
@@ -44,7 +39,11 @@ interface Props{
   alt?: string,
   map?: any
 }
-const Main = ({ setSearchItem, search, getMainImages, main }:Props) => {
+
+  export const Main = () => {
+    const search = useTypedSelector((state)=>{return state.search});
+    const main = useTypedSelector((state)=>{return state.main});
+    const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
 
   const [back, setBack] = useState<IBack>({
@@ -73,10 +72,10 @@ const Main = ({ setSearchItem, search, getMainImages, main }:Props) => {
   const { t } = useTranslation();
 
   const fetchData = async () => {
-    getMainImages({
+    dispatch(getMainImages({
       page: currentPage || 0,
       per_page: 40,
-    });
+    }));
   };
 
   const fetchBackground = async () => {
@@ -89,7 +88,7 @@ const Main = ({ setSearchItem, search, getMainImages, main }:Props) => {
 
   useEffect(() => {
     localStorage.setItem("search", "");
-    setSearchItem("");
+    dispatch(setSearchItem(""));
   }, []);
 
   useEffect(() => {
@@ -169,17 +168,3 @@ const Main = ({ setSearchItem, search, getMainImages, main }:Props) => {
   );
 };
 
-const mapStateToProps = (state:any) => ({
-  search: state.search,
-  main: state.main,
-});
-
-const mapDispatchToProps = (dispatch:any) => {
-  return {
-    getMainImages: (params:Props) => dispatch(getMainImages(params)),
-    setSearchItem: (params:Props) => dispatch(setSearchItem(params)),
-  };
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main as any);
