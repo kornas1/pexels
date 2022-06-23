@@ -8,7 +8,8 @@ import {Hint} from "../Components/Hint/Hint";
 import Photo from "../Components/Photo/Photo";
 import List from "../Components/List/List";
 import "../main.css";
-import { FETCH_MAIN } from "../actions/main";
+import { FETCH_MAIN } from "../constants/actions";
+// import { FETCH_MAIN } from "../actions/main";
 import { useTranslation } from "react-i18next";
 import { setSearchItem } from "../actions/search";
 import { getMainImages } from "../actions/main";
@@ -79,7 +80,7 @@ import { connect , useDispatch} from "react-redux";
       page: currentPage || 0,
       per_page: 40 }}
        );
-  }, []);
+  }, [currentPage]);
 
   const fetchBackground = async () => {
     setBack(main.data[Math.floor(Math.random() * 40)]);
