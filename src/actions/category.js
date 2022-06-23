@@ -25,4 +25,5 @@ export function* getCategoryImages(params) {
         console.log(error);
         yield put({type: GET_CATEGORY_IMAGES_ERROR});
     }
-} 
+}
+

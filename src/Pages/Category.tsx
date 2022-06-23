@@ -9,7 +9,9 @@ import Orientation from "../Components/Orientation/Orientation";
 import { connect, useDispatch } from "react-redux";
 import { getCategoryImages, fetchImages } from "../actions/category";
 import {FETCH_IMAGES} from "../constants/actions";
+
 // import { FETCH_IMAGES } from "../actions/category";
+
 import { setSearchItem } from "../actions/search";
 import { useTranslation } from "react-i18next";
 import { useTypedSelector } from "../useTypedSelecor";
