@@ -7,7 +7,7 @@ import Size from "../Components/Size/Size";
 import "../Components/style.css";
 import Orientation from "../Components/Orientation/Orientation";
 import { connect, useDispatch } from "react-redux";
-import { getCategoryImages } from "../actions/category";
+import { getCategoryImages, fetchImages, FETCH_IMAGES } from "../actions/category";
 import { setSearchItem } from "../actions/search";
 import { useTranslation } from "react-i18next";
 import { useTypedSelector } from "../useTypedSelecor";
@@ -53,14 +53,24 @@ import { useTypedSelector } from "../useTypedSelecor";
   };
 
   const fetchData = useCallback(async () => {
-   dispatch(getCategoryImages({
+    dispatch({type: FETCH_IMAGES, payload: {
       page: currentPage || 0,
       query: word || localStorage.getItem("search"),
       per_page: 40,
       orientation: orientation === `` ? null : orientation,
-      size: size === `` ? null : size,
-    }));
+      size: size === `` ? null : size }}
+    );
   }, [word, currentPage, orientation, size]);
+
+
+      // fetchImages()
+    // getCategoryImages({
+    //   page: currentPage || 0,
+    //   query: word || localStorage.getItem("search"),
+    //   per_page: 40,
+    //   orientation: orientation === `` ? null : orientation,
+    //   size: size === `` ? null : size,
+    // })
 
   const loadMore = useCallback(() => {
     setCurrentPage(currentPage + 1);

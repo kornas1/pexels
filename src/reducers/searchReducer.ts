@@ -19,3 +19,4 @@ const searchReducer = (state = initialState, action: ActionTypesSearch):SearchTy
 };
 
 export default searchReducer;
+

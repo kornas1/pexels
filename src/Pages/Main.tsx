@@ -8,11 +8,14 @@ import {Hint} from "../Components/Hint/Hint";
 import Photo from "../Components/Photo/Photo";
 import List from "../Components/List/List";
 import "../main.css";
+import { FETCH_MAIN } from "../actions/main";
 import { useTranslation } from "react-i18next";
 import { setSearchItem } from "../actions/search";
 import { getMainImages } from "../actions/main";
 import { useTypedSelector } from "../useTypedSelecor";
 import { connect , useDispatch} from "react-redux";
+
+
 
 //const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 
@@ -44,7 +47,7 @@ import { connect , useDispatch} from "react-redux";
     const search = useTypedSelector((state)=>{return state.search});
     const main = useTypedSelector((state)=>{return state.main});
     const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
 
   const [back, setBack] = useState<IBack>({
      id: 0,
@@ -71,12 +74,12 @@ import { connect , useDispatch} from "react-redux";
   });
   const { t } = useTranslation();
 
-  const fetchData = async () => {
-    dispatch(getMainImages({
+  const fetchData = useCallback(async () => {
+    dispatch({type: FETCH_MAIN, payload:{
       page: currentPage || 0,
-      per_page: 40,
-    }));
-  };
+      per_page: 40 }}
+       );
+  }, []);
 
   const fetchBackground = async () => {
     setBack(main.data[Math.floor(Math.random() * 40)]);
