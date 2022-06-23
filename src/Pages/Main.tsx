@@ -8,7 +8,7 @@ import {Hint} from "../Components/Hint/Hint";
 import Photo from "../Components/Photo/Photo";
 import List from "../Components/List/List";
 import "../main.css";
-import { FETCH_MAIN } from "../actions/main";
+import { FETCH_MAIN } from "../constants/actions";
 import { useTranslation } from "react-i18next";
 import { setSearchItem } from "../actions/search";
 import { getMainImages } from "../actions/main";

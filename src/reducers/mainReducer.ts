@@ -1,4 +1,4 @@
-import * as types from "../actions/main";
+import * as types from "../constants/actions";
  import {PhotoMain, ActionTypesCreator} from "../types";
 
 const initialState: PhotoMain = {
