@@ -21,30 +21,42 @@ import { useTypedSelector } from "../useTypedSelecor";
 
  export const Category = () => {
   const search = useTypedSelector((state)=>{return state.search})
+
   const category = useTypedSelector((state)=>{return state.category})
   const dispatch = useDispatch();
 
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [word, setWord] = useState<string>(search.search ? search.search : "");
+  //console.log(search.search);
   const [orientation, setOrientation] = useState("");
   const [size, setSize] = useState("");
 
   useEffect(() => {
+    console.log(window.location.pathname)
     dispatch(setSearchItem(t((window.location.pathname).substring(8))))
   }, []);
 
-  const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
-      // event.preventDefault();
-      setCurrentPage(1);
-      setWord(search.search);
-      localStorage.setItem("search", search.search);
-      if (currentPage === 1) {
-        fetchData();
-      }
-    },
-    [currentPage, search, word]
-  );
+  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   console.log("aaaaaaaaaaaaaaaaaaaaaaaaa")
+  //     // event.preventDefault();
+  //     setCurrentPage(1);
+  //     setWord(search.search);
+
+  //     localStorage.setItem("search", search.search);
+  //     if (currentPage === 1) {
+  //       fetchData();
+  //     }
+  //  }
+  //  [
+     // currentPage, search.search, word
+  //  ]
+ // );
+
+ useEffect(() => {
+  console.log(search.search)
+  //dispatch(setSearchItem(t((window.location.pathname).substring(8))))
+}, [search.search]);
 
   const FilterChange = (event:React.MouseEvent<HTMLElement>, temp:string) => {
     setOrientation(temp);
@@ -59,34 +71,27 @@ import { useTypedSelector } from "../useTypedSelecor";
   const fetchData = useCallback(async () => {
     dispatch({type: FETCH_IMAGES, payload: {
       page: currentPage || 0,
-      query: word || localStorage.getItem("search"),
+      query: search.search ||  localStorage.getItem("search"),
       per_page: 40,
       orientation: orientation === `` ? null : orientation,
       size: size === `` ? null : size }}
     );
-  }, [word, currentPage, orientation, size]);
+  }, [search.search, currentPage, orientation, size]);
 
-
-      // fetchImages()
-    // getCategoryImages({
-    //   page: currentPage || 0,
-    //   query: word || localStorage.getItem("search"),
-    //   per_page: 40,
-    //   orientation: orientation === `` ? null : orientation,
-    //   size: size === `` ? null : size,
-    // })
 
   const loadMore = useCallback(() => {
     setCurrentPage(currentPage + 1);
   }, [currentPage]);
 
   useEffect(() => {
-    fetchData();
-  }, [currentPage, orientation, size, word]); // eslint-disable-line react-hooks/exhaustive-deps
+    search.search && fetchData();
+  }, [currentPage, orientation, size, search.search]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
-      <Header props={0} funct={handleSubmit} />
+      <Header props={0}
+     // funct={(event:any) => handleSubmit(event)}
+       />
 
       <div className="search-photos">
         <div className="choice">
@@ -114,7 +119,7 @@ import { useTypedSelector } from "../useTypedSelecor";
         </div>
         <div className="search-photos__header">
           <h1>
-            {word || localStorage.getItem("search")} {t("photos")}
+            {search.search || localStorage.getItem("search")} {t("photos")}
           </h1>
         </div>
       </div>

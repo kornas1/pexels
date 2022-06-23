@@ -73,8 +73,8 @@ const Header = (props:SizeTypes) => {
       </Link>
       <Search
      // @ts-ignore
-       submitprops={props.funct}
-      
+      //  submitprops={props.funct()}
+
         />
       <ul className="main-nav-bar__sub-nav dots">
         <li className="hide-when-mid-size-and-smaller">

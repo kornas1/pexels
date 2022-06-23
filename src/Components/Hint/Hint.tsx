@@ -55,13 +55,13 @@ export const Hint = () => {
   const { t } = useTranslation();
   const [words, setwords] = useState<string[]>([]);
   const dispatch = useDispatch();
- 
+
   const handleLinkClick = (word:string) => {
     console.log("Hint")
     console.log(typeof(t(word as unknown as TemplateStringsArray) as string));
    dispatch(setSearchItem(t(word as unknown as TemplateStringsArray) as string));
     //@ts-ignore
-    localStorage.setItem("search", t(word));
+  //  localStorage.setItem("search", t(word));
   };
 
   useEffect(() => {
@@ -99,7 +99,7 @@ export const Hint = () => {
           </li>
         </Link>
       ));
-    } 
+    }
 
     return <>{fun()}</>
 };

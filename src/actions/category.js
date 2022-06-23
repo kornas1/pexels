@@ -13,6 +13,7 @@ export const FETCH_IMAGES = "FETCH_IMAGES";
 export const fetchImages = () => ({type: FETCH_IMAGES});
 
 export function* getCategoryImages(params) {
+  console.log(params)
     yield put({type: GET_CATEGORY_IMAGES});
     try {
         const response = yield call(getImagesCategory, params.payload);

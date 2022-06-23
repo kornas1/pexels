@@ -7,25 +7,33 @@ import { setSearchItem } from "../../actions/search";
 import { connect , useDispatch } from "react-redux";
 import { useTypedSelector } from "../../useTypedSelecor";
 
+
+
  export const Search = () => {
-  let submitprops : any;
+ // let submitprops : any;
   const search = useTypedSelector((state)=>{return state.search});
-  console.log(search);
+
   let [value, setValue] = useState("");
 
   const dispatch = useDispatch();
   const { t  } = useTranslation();
 
-  useEffect(()=>{
-    submitprops=null;
-   ( localStorage.getItem("search")||"") ? setValue(localStorage.getItem("search")||"") :setValue(search.search);
-  },[localStorage.getItem("search")])
+//   useEffect(()=>{
+//     // submitprops=null;
+//     // console.log(localStorage.getItem("search")||nu)
+//  //  ( localStorage.getItem("search")) ? setValue(localStorage.getItem("search")||"") :setValue(search.search);
+//   //  console.log(localStorage.getItem("search"))
+//   //  console.log(value);
+//   },[
+//   // localStorage.getItem("search")
+//   ])
 
   return (
     <div className="main-nav-bar__search-bar">
       <form
         onSubmit={(event) => {
-          submitprops(event);
+          console.log("searchsubmit")
+          //submitprops(event);
           dispatch(setSearchItem(value));
         }}
         autoComplete="off"
@@ -36,10 +44,11 @@ import { useTypedSelector } from "../../useTypedSelecor";
         <div className="search-bar__container">
           <input
 
-            value={value}
+            value={value || search.search}
             onChange={(event) => {
+              console.log("searchchange")
             setValue(event.target.value);
-             console.log(search);
+
             }}
             autoCapitalize="none"
             autoComplete="off"
@@ -52,7 +61,9 @@ import { useTypedSelector } from "../../useTypedSelecor";
               id="search-action"
               title="Поиск стоковых фото"
               type="submit"
-              onClick={() => {
+              onClick={(event) => {
+             // submitprops(event);
+                console.log("searchclick")
                 dispatch(setSearchItem(value));
               }
             }
