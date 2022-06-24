@@ -7,17 +7,11 @@ import Size from "../Components/Size/Size";
 import "../Components/style.css";
 import Orientation from "../Components/Orientation/Orientation";
 import { connect, useDispatch } from "react-redux";
-import { getCategoryImages, fetchImages } from "../actions/category";
 import {FETCH_IMAGES} from "../constants/actions";
-
-// import { FETCH_IMAGES } from "../actions/category";
-
 import { setSearchItem } from "../actions/search";
 import { useTranslation } from "react-i18next";
 import { useTypedSelector } from "../useTypedSelecor";
-
-//const API_KEY = `${process.env.REACT_APP_API_KEY}`;
-
+import { PhotosTypes } from "../Components/Photo/Photo";
 
  export const Category = () => {
   const search = useTypedSelector((state)=>{return state.search})
@@ -27,36 +21,12 @@ import { useTypedSelector } from "../useTypedSelecor";
 
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
-  const [word, setWord] = useState<string>(search.search ? search.search : "");
-  //console.log(search.search);
   const [orientation, setOrientation] = useState("");
   const [size, setSize] = useState("");
 
   useEffect(() => {
-    console.log(window.location.pathname)
     dispatch(setSearchItem(t((window.location.pathname).substring(8))))
   }, []);
-
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   console.log("aaaaaaaaaaaaaaaaaaaaaaaaa")
-  //     // event.preventDefault();
-  //     setCurrentPage(1);
-  //     setWord(search.search);
-
-  //     localStorage.setItem("search", search.search);
-  //     if (currentPage === 1) {
-  //       fetchData();
-  //     }
-  //  }
-  //  [
-     // currentPage, search.search, word
-  //  ]
- // );
-
- useEffect(() => {
-  console.log(search.search)
-  //dispatch(setSearchItem(t((window.location.pathname).substring(8))))
-}, [search.search]);
 
   const FilterChange = (event:React.MouseEvent<HTMLElement>, temp:string) => {
     setOrientation(temp);
@@ -89,10 +59,7 @@ import { useTypedSelector } from "../useTypedSelecor";
 
   return (
     <div>
-      <Header props={0}
-     // funct={(event:any) => handleSubmit(event)}
-       />
-
+      <Header props={0}/>
       <div className="search-photos">
         <div className="choice">
           <Choice total_results={category.total_results} />
@@ -135,7 +102,7 @@ import { useTypedSelector } from "../useTypedSelecor";
         }
       >
         {/* REACT_APP_API_KEY = 563492ad6f91700001000001144a82244ce645b69edc061c1fa2e6bd; */}
-        <Photo items={category.data ? category.data : []} />
+        <Photo items={category.data ? category.data as PhotosTypes[] : []} />
       </InfiniteScroll>
     </div>
   );

@@ -11,19 +11,19 @@ const Columns = {
 };
 
 interface ItemTypes{
-  items: PhotosTypes,
+  items: PhotosTypes[],
 }
 
-interface PhotosTypes{
-  map: any;
-    id?: any,
-   src?: {
+export interface PhotosTypes{
+  // map: any;
+  id: number  ,
+  src?: {
      medium:string,
      original: string,
    }
    photographer_url?:string,
    photographer?: string,
-   
+
 }
 
 const Photo = (items:ItemTypes) => {
@@ -68,7 +68,7 @@ const Photo = (items:ItemTypes) => {
                     <div
                       className="phot-col__photos__el__tabs__el phot-col__photos__el__tabs--download"
                       onClick={() =>
-                        {saveAs(photo.src ? photo.src.original : "", photo.id);
+                        {saveAs(photo.src ? photo.src.original : "", String(photo.id));
                     }
                       }
                     >

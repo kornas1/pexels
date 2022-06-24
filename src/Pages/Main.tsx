@@ -9,16 +9,12 @@ import Photo from "../Components/Photo/Photo";
 import List from "../Components/List/List";
 import "../main.css";
 import { FETCH_MAIN } from "../constants/actions";
-
 import { useTranslation } from "react-i18next";
 import { setSearchItem } from "../actions/search";
 import { getMainImages } from "../actions/main";
 import { useTypedSelector } from "../useTypedSelecor";
 import { connect , useDispatch} from "react-redux";
 
-
-
-//const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 
  export interface IBack{
   id?: number,
@@ -41,7 +37,7 @@ import { connect , useDispatch} from "react-redux";
   },
   liked?: boolean,
   alt?: string,
-  map?: any
+  // map?: string
 }
 
   export const Main = () => {
@@ -71,7 +67,7 @@ import { connect , useDispatch} from "react-redux";
     },
     liked: false,
     alt: "",
-    map:""
+    // map:""
   });
   const { t } = useTranslation();
 
@@ -101,7 +97,7 @@ import { connect , useDispatch} from "react-redux";
 
   useEffect(() => {
     fetchData();
-  }, [currentPage]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [currentPage]);
 
   return (
     <div>

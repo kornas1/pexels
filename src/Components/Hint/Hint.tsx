@@ -57,15 +57,10 @@ export const Hint = () => {
   const dispatch = useDispatch();
 
   const handleLinkClick = (word:string) => {
-    console.log("Hint")
-    console.log(typeof(t(word as unknown as TemplateStringsArray) as string));
    dispatch(setSearchItem(t(word as unknown as TemplateStringsArray) as string));
-    //@ts-ignore
-  //  localStorage.setItem("search", t(word));
   };
 
   useEffect(() => {
-    console.log("Hint")
     setwords(randomizer());
   }, []);
 
@@ -92,9 +87,7 @@ export const Hint = () => {
           >
             <div
             >
-              {
-              //@ts-ignore
-              t(word)}
+              {t(word)}
             </div>
           </li>
         </Link>

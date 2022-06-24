@@ -7,8 +7,7 @@ import { useTranslation } from "react-i18next";
 
 interface SizeTypes{
   props: number,
-  funct?: any,
-  // onClick: (event: React.MouseEvent<HTMLElement>) => void,
+  // funct?: any,
 }
 
 const Header = (props:SizeTypes) => {
@@ -71,11 +70,7 @@ const Header = (props:SizeTypes) => {
           </div>
         </div>
       </Link>
-      <Search
-     // @ts-ignore
-      //  submitprops={props.funct()}
-
-        />
+      <Search />
       <ul className="main-nav-bar__sub-nav dots">
         <li className="hide-when-mid-size-and-smaller">
           <div data-dropdown="explore">
