@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 
 interface SizeTypes{
   props: number,
-  // funct?: any,
 }
 
 const Header = (props:SizeTypes) => {

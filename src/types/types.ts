@@ -9,12 +9,22 @@ export interface PhotoMain{
     loading: boolean,
 }
 
-interface ActionTypes{
+export interface ActionTypes{
     next_page: number ,
     page: number,
     per_page: number,
     photos: PhotoTypes[],
     total_results: number,
+}
+
+
+export interface TypesActions{
+    success: boolean,
+    results: PhotoTypes[]
+}
+
+export interface TypeGetMain{
+    type: string,
 }
 
 export interface ActionTypesCreator{
@@ -24,6 +34,11 @@ export interface ActionTypesCreator{
 export interface ActionTypesSearch{
     type: string;
     payload: string;
+}
+
+export interface ActionTypesMain{
+    type: string;
+    payload?: ActionTypes;
 }
 
 export interface SearchTypes{
@@ -52,3 +67,9 @@ export interface PhotoTypes{
     url: string,
     width: number,
 }
+export type Response = {
+    success: boolean;
+    results?: PhotoTypes[];
+  }
+
+export type GetImages = (data: FormData) => Promise<Response>

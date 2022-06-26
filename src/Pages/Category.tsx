@@ -11,7 +11,8 @@ import {FETCH_IMAGES} from "../constants/actions";
 import { setSearchItem } from "../actions/search";
 import { useTranslation } from "react-i18next";
 import { useTypedSelector } from "../useTypedSelecor";
-import { PhotosTypes } from "../Components/Photo/Photo";
+// import { PhotosTypes } from "../Components/Photo/Photo";
+import {PhotoTypes} from "../types/types";
 
  export const Category = () => {
   const search = useTypedSelector((state)=>{return state.search})
@@ -102,7 +103,7 @@ import { PhotosTypes } from "../Components/Photo/Photo";
         }
       >
         {/* REACT_APP_API_KEY = 563492ad6f91700001000001144a82244ce645b69edc061c1fa2e6bd; */}
-        <Photo items={category.data ? category.data as PhotosTypes[] : []} />
+        <Photo items={category.data ? category.data as PhotoTypes[] : []} />
       </InfiniteScroll>
     </div>
   );

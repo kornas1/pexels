@@ -1,10 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import {IBack} from "../../Pages/Main"
+import {PhotoTypes} from "../../types/types";
 import "../style.css";
 
   interface BackTypes{
-    back:IBack
+    back:PhotoTypes
   }
 
   const Author = (back: BackTypes) => {

@@ -1,8 +1,0 @@
-// import {all} from "redux-saga/effects";
-// import {getMainImagesWatcher} from "../src/actions/main";
-// import {getCategoryImagesWatcher} from "../src/actions/category"
-
-
-// export function* rootWatcher() {
-//     yield all([getMainImagesWatcher(), getCategoryImagesWatcher()])
-// }

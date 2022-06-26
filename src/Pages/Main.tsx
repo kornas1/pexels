@@ -14,31 +14,7 @@ import { setSearchItem } from "../actions/search";
 import { getMainImages } from "../actions/main";
 import { useTypedSelector } from "../useTypedSelecor";
 import { connect , useDispatch} from "react-redux";
-
-
- export interface IBack{
-  id?: number,
-  width?: number,
-  height?: number,
-  url?: string,
-  photographer?: string,
-  photographer_url?: string,
-  photographer_id?: number,
-  avg_color?: string,
-  src?:{
-    original?: string,
-    large2x?: string,
-    large?: string,
-    medium?: string,
-    small?: string,
-    portrait?: string,
-    landscape?: string,
-    tiny?: string,
-  },
-  liked?: boolean,
-  alt?: string,
-  // map?: string
-}
+import {PhotoTypes} from "../types/types";
 
   export const Main = () => {
     const search = useTypedSelector((state)=>{return state.search});
@@ -46,7 +22,7 @@ import { connect , useDispatch} from "react-redux";
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
 
-  const [back, setBack] = useState<IBack>({
+  const [back, setBack] = useState<PhotoTypes>({
      id: 0,
     width: 0,
     height: 0,

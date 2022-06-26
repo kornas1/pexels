@@ -5,7 +5,6 @@ import "../style.css";
 interface SizeTypes{
   size: string,
   funt: (event:React.MouseEvent<HTMLElement>, temp:string) => void  
-  // onClick: (event: React.MouseEvent<HTMLElement>) => void,
 }
 
 

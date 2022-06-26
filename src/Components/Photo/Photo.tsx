@@ -3,6 +3,7 @@ import React from "react";
 import { saveAs } from "file-saver";
 import Like from "../Like/Like";
 import "../style.css";
+import {PhotoTypes} from "../../types/types";
 
 const Columns = {
   default: 4,
@@ -11,20 +12,20 @@ const Columns = {
 };
 
 interface ItemTypes{
-  items: PhotosTypes[],
+  items: PhotoTypes[],
 }
 
-export interface PhotosTypes{
-  // map: any;
-  id: number  ,
-  src?: {
-     medium:string,
-     original: string,
-   }
-   photographer_url?:string,
-   photographer?: string,
+// export interface PhotosTypes{
+//   // map: any;
+//   id: number  ,
+//   src?: {
+//      medium:string,
+//      original: string,
+//    }
+//    photographer_url?:string,
+//    photographer?: string,
 
-}
+// }
 
 const Photo = (items:ItemTypes) => {
   return (
@@ -34,7 +35,7 @@ const Photo = (items:ItemTypes) => {
       columnClassName="my-masonry-grid_column"
     >
       {items
-        ? items.items.map((photo:PhotosTypes) => (
+        ? items.items.map((photo:PhotoTypes) => (
             <div key={photo.id} className="phot-col__photos__el">
               <article className="phot-col__photos__el__article">
                 <a

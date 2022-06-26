@@ -1,13 +1,13 @@
 import _ from "lodash";
-import axios from "axios";
-import { parse, compile } from "path-to-regexp";
+import axios, { AxiosRequestHeaders, ResponseType } from "axios";
+import { parse, compile, Key } from "path-to-regexp";
 import store from "./store";
 
 axios.defaults.baseURL = "https://api.pexels.com/v1";
 
 axios.interceptors.request.use(
   function(config) {
-    config.headers.Authorization =
+    config.headers!.Authorization =
       "563492ad6f91700001000001144a82244ce645b69edc061c1fa2e6bd";
     return config;
   },
@@ -16,7 +16,23 @@ axios.interceptors.request.use(
   }
 );
 
-const fetch = (options) => {
+
+type HttpMethod = "get" | "delete" | "post" | "put" | "patch";
+
+export type Options = {
+  method?: HttpMethod
+  data: FormData
+  url: string
+  headers?: AxiosRequestHeaders
+  responseType?: ResponseType
+  withCredentials?: boolean
+}
+
+type Data = {
+  [key: string]: number | string | boolean | undefined;
+}
+
+const fetch = (options: Options) => {
   let {
     method = "get",
     data,
@@ -27,24 +43,24 @@ const fetch = (options) => {
   } = options;
   headers = headers || {};
 
-  const cloneData = data instanceof FormData ? data : _.cloneDeep(data);
+  const cloneData = (data instanceof FormData ? data : _.cloneDeep(data)) as unknown as Data;
 
   try {
     let domin = "";
     if (url.match(/[a-zA-z]+:\/\/[^/]*/)) {
-      [domin] = url.match(/[a-zA-z]+:\/\/[^/]*/);
+      [domin] = url.match(/[a-zA-z]+:\/\/[^/]*/) || [];
       url = url.slice(domin.length);
     }
     const match = parse(url);
     url = compile(url)(data);
     for (let item of match) {
-      if (item instanceof Object && item.name in cloneData) {
-        delete cloneData[item.name];
+      if ((item as Key).name in cloneData) {
+        delete cloneData[(item as Key).name];
       }
     }
     url = domin + url;
   } catch (e) {
-    console.log(e.message);
+    console.log((e as Error).message);
   }
 
   switch (method.toLowerCase()) {
@@ -73,7 +89,7 @@ const fetch = (options) => {
   }
 };
 
-export default function request(options) {
+export default function request(options: Options) {
   return fetch(options)
     .then((response) => {
       const { statusText, status, data } = response;
@@ -99,7 +115,6 @@ export default function request(options) {
 
       if (code === 401) {
         console.log("401 Unauthorized");
-        store.dispatch();
         return Promise.resolve({ success: false, code });
       }
 
